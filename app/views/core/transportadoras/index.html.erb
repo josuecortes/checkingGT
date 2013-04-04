@@ -1,0 +1,46 @@
+<div class="page-header">
+	<h3>Lista de Transportadoras</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+
+			<th>Cnpj</th>
+
+			<th>Inscrição Estadual</th>
+
+			<th>Nome Fantasia</th>
+
+			<th>Razão Social</th>
+			
+			<th>Tipo</th>
+			
+			<th></th>
+
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @core_transportadoras) do |core_transportadora| %>
+
+		<td><%= core_transportadora.cnpj %></td>
+
+		<td><%= core_transportadora.inscricaoestadual %></td>
+
+		<td><%= core_transportadora.nomefantasia %></td>
+
+		<td><%= core_transportadora.razaosocial %></td>
+		
+		<td><%= core_transportadora.tipo %></td>
+
+		<td><%= link_to 'Mostrar', core_transportadora, :class=>"btn btn-small"%></td>
+		<td><%= link_to 'Editar', edit_core_transportadora_path(core_transportadora), :class=>"btn btn-primary btn-small" %></td>
+		<td><%= link_to 'Apagar', core_transportadora, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Nova Transportadora', new_core_transportadora_path, :class=>"btn btn-success" %>

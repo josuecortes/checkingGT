@@ -1,0 +1,31 @@
+<div class="page-header">
+	<h3>Lista de Grupos</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			<th>Nome</th>
+			<th>Sigla</th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @grupos) do |grupo| %>
+		<td><%= grupo.nome %></td>
+		<td><%= grupo.sigla %></td>
+
+		<td><%= link_to 'Mostrar', transportadora_grupo_path(grupo), :class=>"btn btn-small"%></td>
+		<td><%= link_to 'Editar', edit_transportadora_grupo_path(grupo), :class=>"btn btn-primary btn-small" %></td>
+		<td><%= link_to 'Apagar', transportadora_grupo_path(grupo), :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+
+		<td><%= link_to "Usuarios (#{grupo.usuarios.count})", transportadora_grupo_grupo_usuarios_path(grupo), :class=>"btn btn-success" %></td>
+		<td><%= link_to "Sistemas (#{grupo.sistemas.count})", transportadora_grupo_grupo_sistemas_path(grupo), :class=>"btn btn-success" %></td>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Novo Grupo', new_transportadora_grupo_path, :class=>"btn btn-success" %>

@@ -1,0 +1,49 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', transportadora_grupo_grupo_usuarios_path(@grupo) %> | Novo Usuario para o Grupo <%= @grupo.nome %></h3>
+</div>
+
+<%= form_for(@grupo_usuario, :url => transportadora_grupo_grupo_usuarios_path(@grupo)) do |f| %>
+
+<% if @grupo_usuario.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@grupo_usuario.errors.count, "erro") %> ao tentar salvar este formulario:</strong>
+	<ul>
+		<% @grupo_usuario.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			<th>Adicionar</th>
+			<th>Usuario</th>
+
+		</tr>
+	</thead>
+
+	<tbody>
+
+		<% @uf.each do |usuario| %>
+		<tr>
+
+			<td><%= check_box_tag "usuarios[]", usuario.id %></td>
+			<td><%= usuario.nome %></td>
+
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<div class="form-actions">
+	<%= f.submit "Adicionar Selecionados", :class=>"btn btn-primary" %>
+	<button type="reset" class="btn">
+		Cancelar
+	</button>
+</div>
+
+<% end %>

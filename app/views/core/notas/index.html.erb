@@ -1,0 +1,108 @@
+<div class="page-header">
+	<h3>Lista de core_notas</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			
+			<th>Codigo</th>
+			
+			<th>Cnpj origem</th>
+			
+			<th>Cnpj destino</th>
+			
+			<th>Cpf destino</th>
+			
+			<th>Uf origem</th>
+			
+			<th>Uf destino</th>
+			
+			<th>Data emissao</th>
+			
+			<th>Data entrada</th>
+			
+			<th>Valor produtos</th>
+			
+			<th>Valor total</th>
+			
+			<th>Numero pin suframa</th>
+			
+			<th>Valor st</th>
+			
+			<th>Valor icms</th>
+			
+			<th>Valor bc st</th>
+			
+			<th>Valor icms</th>
+			
+			<th>Valor bc st</th>
+			
+			<th>Valor bc icms</th>
+			
+			<th>Numero nota</th>
+			
+			<th>Qtd itens nfe</th>
+			
+			<th>Usuario</th>
+			
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @core_notas) do |core_nota| %>
+		
+		<td><%= core_nota.codigo %></td>
+		
+		<td><%= core_nota.cnpj_origem %></td>
+		
+		<td><%= core_nota.cnpj_destino %></td>
+		
+		<td><%= core_nota.cpf_destino %></td>
+		
+		<td><%= core_nota.uf_origem %></td>
+		
+		<td><%= core_nota.uf_destino %></td>
+		
+		<td><%= core_nota.data_emissao %></td>
+		
+		<td><%= core_nota.data_entrada %></td>
+		
+		<td><%= core_nota.valor_produtos %></td>
+		
+		<td><%= core_nota.valor_total %></td>
+		
+		<td><%= core_nota.numero_pin_suframa %></td>
+		
+		<td><%= core_nota.valor_st %></td>
+		
+		<td><%= core_nota.valor_icms %></td>
+		
+		<td><%= core_nota.valor_bc_st %></td>
+		
+		<td><%= core_nota.valor_icms %></td>
+		
+		<td><%= core_nota.valor_bc_st %></td>
+		
+		<td><%= core_nota.valor_bc_icms %></td>
+		
+		<td><%= core_nota.numero_nota %></td>
+		
+		<td><%= core_nota.qtd_itens_nfe %></td>
+		
+		<td><%= core_nota.usuario_id %></td>
+		
+		<td><%= link_to 'Mostrar', core_nota, :class=>"btn btn-small"%></td>
+		<td><%= link_to 'Editar', edit_core_nota_path(core_nota), :class=>"btn btn-primary btn-small" %></td>
+		<td><%= link_to 'Apagar', core_nota, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Novo(a) Nota', new_core_nota_path, :class=>"btn btn-success" %>
+

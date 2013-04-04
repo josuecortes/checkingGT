@@ -1,0 +1,32 @@
+<div class="page-header">
+	<h3>Lista de Modulos</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			<th>Nome</th>
+			<th>Sigla</th>
+			<th></th>
+
+		</tr>
+	</thead>
+	<% @core_modulos.each do |core_modulo| %>
+	<tbody>
+		<tr>
+			<td><%= core_modulo.nome %></td>
+			<td><%= core_modulo.sigla %></td>
+			<td><%= link_to 'Mostar', core_modulo, :class=>"btn btn-small" %></td>
+			<td><%= link_to 'Editar', edit_core_modulo_path(core_modulo), :class=>"btn btn-primary btn-small" %></td>
+			<td><%= link_to 'Mudar Status', core_modulo, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Deseja Realmente Mudar o Status deste Modulo?' } %></td>
+
+			<td><%= link_to 'Sistemas', core_modulo_sistemas_path(core_modulo), :class=>"btn btn-success btn-small" %></td>
+
+		</tr>
+	</tbody>
+	<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo Modulo', new_core_modulo_path, :class=>"btn btn-success" %>

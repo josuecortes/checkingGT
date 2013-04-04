@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="utf-8">
+		<title> Intranet SRE </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="A calm, blue sky.">
+		<meta name="author" content="Thomas Park">
+
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+
+		<!--
+		<script type="text/javascript">
+
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-23019901-1']);
+		_gaq.push(['_setDomainName', "bootswatch.com"]);
+		_gaq.push(['_setAllowLinker', true]);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+
+		</script>
+		-->
+
+	</head>
+
+	<body class="preview" data-spy="scroll" data-target=".subnav" data-offset="80">
+
+		<!-- Navbar
+		================================================== -->
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+					<a class="brand" href="../">Sre - Sec</a>
+					<div class="nav-collapse" id="main-menu">
+						
+						<% if @usuario_logado %>
+						
+						<ul class="nav" id="main-menu-left">
+
+									
+										<li><%= link_to 'Intranet', :controller=>'/intranet', :action=>:index %></li>
+										<% @usuario_logado.modulos.uniq.each do |m| %>										
+										<li class="dropdown">
+											<a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= m.nome %> <b class="caret"></b></a>
+											<ul class="dropdown-menu" id="swatch-menu">
+												<% @usuario_logado.sistemas.each do |s| %>
+												  <% if s.modulo_id == m.id and s.url != "" %>
+												    <li><%= link_to s.nome, :controller=>s.url, :action=>:index %></li>
+												  <% end %>  
+												<% end %>
+											</ul>
+										</li>
+									    <% end %>
+									
+								</ul>
+						
+						
+						<ul class="nav pull-right" id="main-menu-right">
+							
+							<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= @usuario_logado.nome %><b class="caret"></b></a>
+								<ul class="dropdown-menu" id="swatch-menu">
+									<li>
+										<%= link_to 'Perfil', core_perfil_path(@usuario_logado.id) %>
+									</li>
+
+									<li class="divider"></li>
+
+									<li>
+										<%= link_to "Sair", :controller => "core/login", :action => "new" %>
+									</li>
+
+								</ul>
+							</li>
+														
+						</ul>
+												
+						<% end %>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+
+			<!-- Masthead
+			================================================== -->
+			<header class="jumbotron subhead" id="overview">
+				<div class="row">
+					<div class="span6">
+						<h1>SRE</h1>
+						<p class="lead">
+							Secretaria da Receita Estadual do Amapá
+						</p>
+					</div>
+					<div class="span6">
+						<!-- <div class="bsa well">
+						<div id="bsap_1277971" class="bsarocks bsap_c466df00a3cd5ee8568b5c4983b6bb19"></div>
+						<div class="clearfix"><a href="http://adpacks.com" id="bsap_aplink">via Ad Packs</a></div>
+						<div class="clearfix"></div>
+						</div> -->
+					</div>
+				</div>
+
+				<div class="navbar subnav">
+					<div class="navbar-inner">
+						<div class="container">
+							<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+
+							<div class="nav-collapse" id="main-menu">
+								<ul class="nav" id="main-menu-left">
+
+									<% if @usuario_logado %>
+
+										<li><%= link_to 'Intranet', :controller=>'/intranet', :action=>:index %></li>
+										<% @usuario_logado.modulos.uniq.each do |m| %>										
+										<li class="dropdown">
+											<a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= m.nome %> <b class="caret"></b></a>
+											<ul class="dropdown-menu" id="swatch-menu">
+												<% @usuario_logado.sistemas.each do |s| %>
+												  <% if s.modulo_id == m.id and s.url != "" %>
+												    <li><%= link_to s.nome, :controller=>s.url, :action=>:index %></li>
+												  <% end %>  
+												<% end %>
+											</ul>
+										</li>
+									    <% end %>
+									<% end %>
+								</ul>
+								<ul class="nav pull-right" id="main-menu-right">
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<!--
+				<div class="subnav">
+				<ul class="nav nav-pills">
+				<!-- DEFINIR DE ACORDO COM AS <sections>
+				<li>
+				<a href="#typography">Typography</a>
+				</li>
+				<li>
+				<a href="#navbar">Navbar</a>
+				</li>
+				<li>
+				<a href="#buttons">Buttons</a>
+				</li>
+				<li>
+				<a href="#forms">Forms</a>
+				</li>
+				<li>
+				<a href="#tables">Tables</a>
+				</li>
+				<li>
+				<a href="#miscellaneous">Miscellaneous</a>
+				</li>
+				</ul>
+				</div>
+
+				-->
+			</header>
+
+			<%= yield %>
+
+			<br>
+			<br>
+			<br>
+			<br>
+
+			<!-- Footer
+			================================================== -->
+			<hr>
+
+			<footer id="footer">
+				<p class="pull-right">
+					<a href="#">Voltar ao Topo</a>
+				</p>
+				<div class="links">
+					<a href="#">SRE</a>
+					<a href="#">SEAD</a>
+					<a href="#">PRODAP</a>
+					<a href="#">OUTROS LINKS</a>
+				</div>
+				Equipe SRE 2012
+				<br/>
+
+			</footer>
+
+		</div><!-- /container -->
+
+		<!-- Le javascript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
+
+	</body>
+</html>
+

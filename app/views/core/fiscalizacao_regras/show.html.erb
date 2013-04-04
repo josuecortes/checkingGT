@@ -1,0 +1,49 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', core_fiscalizacao_regras_path %> | Exibindo Regra de Fiscalização Codigo <%= @core_fiscalizacao_regra.codigo %></h3>
+</div>
+
+
+<p>
+	<strong>Codigo:</strong>
+	<%= @core_fiscalizacao_regra.codigo %>
+</p>
+
+
+<p>
+	<strong>Descricao:</strong>
+	<%= @core_fiscalizacao_regra.descricao %>
+</p>
+
+
+<p>
+	<strong>Legislacao:</strong>
+	<%= @core_fiscalizacao_regra.legislacao %>
+</p>
+
+
+<p>
+	<strong>Orientacao:</strong>
+	<%= @core_fiscalizacao_regra.orientacao %>
+</p>
+
+
+<p>
+	<strong>Canal de Fiscalização:</strong>
+	<%= @core_fiscalizacao_regra.fiscalizacao_canal.codigo %>
+</p>
+
+<p>
+	<strong>Tipo de Negativação:</strong>
+	<%= @core_fiscalizacao_regra.negativacao_tipo.codigo %>
+</p>
+
+
+<p>
+	<strong>Criado por:</strong>
+	<%= @core_fiscalizacao_regra.usuario.nome %>
+	<strong>Em:</strong>
+	<%= @core_fiscalizacao_regra.created_at.to_s_br %>
+</p>
+
+<%= link_to 'Editar', edit_core_fiscalizacao_regra_path(@core_fiscalizacao_regra) %> |
+<%= link_to 'Voltar', core_fiscalizacao_regras_path %>

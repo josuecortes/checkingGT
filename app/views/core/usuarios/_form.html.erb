@@ -1,0 +1,77 @@
+<div class="row">
+
+		<%= form_for(@core_usuario, :html=>{:class=>"form-horizontal well"}) do |f| %>
+		<% if @core_usuario.errors.any? %>
+		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong><%= pluralize(@core_usuario.errors.count, "erro(s)") %> não deixaram este registro ser salvo:</strong>
+
+			<ul>
+				<% @core_usuario.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+
+		<div class="control-group">
+			<%= f.label :nome, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :nome, :class=>"input-xxlarge", :placeholder=>"Nome", :required=>true %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :email, "E-mail", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :email, :class=>"input-xlarge", :placeholder=>"nome@sre.ap.gov.br", :required=>true %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :email_confirmation, "Confirme o E-mail", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :email_confirmation, :class=>"input-xlarge", :placeholder=>"nome@sre.ap.gov.br", :required=>true %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :status, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.check_box :status, :class=>"input-xlarge" %>
+				<p class="help-block">
+					Marcado Usuario Ativo
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :mudarsenha, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.check_box :mudarsenha, :class=>"input-xlarge" %>
+				<p class="help-block">
+					Marcado o Usuario tera que alterar a senha no proximo login
+				</p>
+			</div>
+		</div>
+
+		<div class="form-actions">
+			<%= f.submit "Salvar", :class=>"btn btn-primary" %>
+			<button type="reset" class="btn">
+				Cancelar
+			</button>
+		</div>
+
+		<% end %>
+</div>

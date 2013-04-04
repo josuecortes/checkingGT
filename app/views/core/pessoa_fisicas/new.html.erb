@@ -1,0 +1,108 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', core_pessoa_fisicas_path %> | Nova Pessoa Fisica</h3>
+</div>
+
+<div class="row">
+	<div class="span10 offset1">
+
+		<%= form_for(@core_pessoa_fisica, :html=>{:class=>"form-horizontal well"}) do |f| %>
+
+		<%= f.hidden_field :usuario_id, :value=>@usuario_logado.id %>
+		<%= f.hidden_field :usuario_alterou_id, :value=>@usuario_logado.id %>
+
+		<% if @core_pessoa_fisica.errors.any? %>
+		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong><%= pluralize(@core_pessoa_fisica.errors.count, "erro") %> ao tentar salvar este formulario:</strong>
+
+			<ul>
+				<% @core_pessoa_fisica.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+
+
+		<div class="control-group">
+			<%= f.label :nome, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :nome, :class=>"input-xxlarge", :required=>true %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :cpf, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :cpf, :class=>"input-large", :required=>true %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :endereco, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :endereco, :class=>"input-xxlarge" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :bairro, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :bairro, :class=>"input-xlarge" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :cidade, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :cidade, :class=>"input-xlarge" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :estado, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :estado, :class=>"input-xlarge" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :observacoes, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_area :observacoes, :class=>"input-xlarge", :rows=>"3" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="form-actions">
+			<%= f.submit "Salvar", :class=>"btn btn-primary" %>
+			<button type="reset" class="btn">
+				Cancelar
+			</button>
+		</div>
+		<% end %>
+
+	</div>
+</div>

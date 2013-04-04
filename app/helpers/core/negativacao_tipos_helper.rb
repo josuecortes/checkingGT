@@ -1,0 +1,2 @@
+module Core::NegativacaoTiposHelper
+end

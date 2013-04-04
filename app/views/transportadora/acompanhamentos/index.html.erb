@@ -1,0 +1,83 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', transportadora_embarques_path %> | Lista de Notas do Embarque</h3>
+</div>
+<% if @notas[0] != nil %>
+	<% if @notas[0].embarque.situacao == "Processado" %>
+
+		<%= form_tag(@notas_path, :method => 'get') do %>
+
+			<%= select_tag :situacao, options_for_select(["", "Retida", "Liberada"]), :value=>params[:situacao], :class=>"input-medium" %>
+			<%= text_field_tag :numero, params[:numero], :placeholder=>"Num NF", :class=>"input-mini" %>
+			<%= text_field_tag :emissor, params[:emissor], :placeholder=>"Emissor", :class=>"input-medium" %>
+			<%= text_field_tag :destinatario, params[:destinatario], :placeholder=>"Destinatario", :class=>"input-medium" %>
+			<%= submit_tag "Localizar", :name => nil, :class=>"btn-large btn-primary" %>
+
+		<% end %>
+
+		<div class="pagination pagination-centered">
+			<%= will_paginate @notas, :previous_label => '<< ', :next_label => ' >>' %>
+		</div>
+
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<tr>
+
+					<th>Numero NF</th>
+
+					<th>Emissor</th>
+
+					<th>UF Emissor</th>
+
+					<th>Destinatario</th>
+
+					<th>Valor Total</th>
+
+					<th>DT Emissão</th>
+
+					<th>Situação</th>
+
+
+				</tr>
+			</thead>
+
+			<tbody>
+				<%= content_tag_for(:tr, @notas) do |nota| %>
+
+					<td><%= nota.numero_nota %></td>
+
+					<td><%= nota.cnpj_origem %></td>
+
+					<td><%= nota.uf_origem %></td>
+
+					<% if nota.cnpj_destino != nil %>
+						<td><%= nota.cnpj_destino %></td>
+					<% else %>
+						<td><%= nota.cpf_destino %></td>
+					<% end %>
+
+					<td><%= nota.valor_total %></td>
+
+					<td><%= nota.data_emissao.to_s_br %></td>
+
+					<% if nota.situacao == 'Retida' %>
+						<td><%= link_to 'R', transportadora_embarque_acompanhamento_path(nota.embarque_id, nota.id), :class=>"btn btn-danger btn-small" %></td>
+					<% else %>
+						<td><%= link_to 'L', transportadora_embarque_acompanhamento_path(nota.embarque_id, nota.id), :class=>"btn btn-success btn-small" %> </td>
+					<% end %>
+
+					</p>
+
+				<% end %>
+			</tbody>
+		</table>
+
+		<div class="pagination pagination-centered">
+			<%= will_paginate @notas, :previous_label => '<<', :next_label => '>>' %>
+		</div>
+
+	<% else %>
+		Não Disponivel para Consulta
+	<% end %>
+<% else %>
+	Sem Notas
+<% end %>

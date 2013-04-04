@@ -1,0 +1,33 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', core_fiscalizacao_canais_path %> | Exibindo Canal de Fiscalização Codigo <%= @core_fiscalizacao_canal.codigo %></h3>
+</div>
+
+
+<p>
+	<strong>Codigo:</strong>
+	<%= @core_fiscalizacao_canal.codigo %>
+</p>
+
+
+<p>
+	<strong>Descricao:</strong>
+	<%= @core_fiscalizacao_canal.descricao %>
+</p>
+
+
+<p>
+	<strong>Criado Por:</strong>
+	<%= @core_fiscalizacao_canal.usuario.nome %>
+</p>
+
+
+<p>
+	<strong>Criado em:</strong>
+	<%= @core_fiscalizacao_canal.created_at.to_s_br %>
+</p>
+
+
+
+<%= link_to 'Editar', edit_core_fiscalizacao_canal_path(@core_fiscalizacao_canal) %> |
+<%= link_to 'Voltar', core_fiscalizacao_canais_path %>
+

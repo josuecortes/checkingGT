@@ -1,0 +1,2 @@
+module Transportadora::UsuariosHelper
+end

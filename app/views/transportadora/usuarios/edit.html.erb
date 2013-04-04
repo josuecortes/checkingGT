@@ -1,0 +1,78 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', transportadora_usuarios_path %> | Editando Usuario</h3>
+</div>
+
+
+<div class="row">
+	
+		<%= form_for(@core_usuario, :url=>transportadora_usuario_path, :html=>{:class=>"form-horizontal well"}) do |f| %>
+		
+		<%= f.hidden_field :transportadora_id, :value=>@usuario_logado.transportadora_id %>
+		
+		<% if @core_usuario.errors.any? %>
+		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong><%= pluralize(@core_usuario.errors.count, "erro(s)") %> não deixaram este registro ser salvo:</strong>
+
+			<ul>
+				<% @core_usuario.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+
+		<div class="control-group">
+			<%= f.label :nome, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :nome, :class=>"input-xxlarge", :placeholder=>"Nome Completo" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :email, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :email, :class=>"input-xlarge", :placeholder=>"nome@sre.ap.gov.br" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :status, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.check_box :status, :class=>"input-xlarge", :placeholder=>"nome@sre.ap.gov.br" %>
+				<p class="help-block">
+					Marcado Usuario Ativo
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :mudarsenha, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.check_box :mudarsenha, :class=>"input-xlarge", :placeholder=>"nome@sre.ap.gov.br" %>
+				<p class="help-block">
+					Marcado o Usuario tera que alterar a senha no proximo login
+				</p>
+			</div>
+		</div>
+		
+		<div class="form-actions">
+			<%= f.submit "Salvar", :class=>"btn btn-primary" %>
+			<button type="reset" class="btn">
+				Cancelar
+			</button>
+		</div>
+
+		<% end %>
+</div>
+
+
+

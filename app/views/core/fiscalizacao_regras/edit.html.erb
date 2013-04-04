@@ -1,0 +1,101 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', core_fiscalizacao_regras_path %> | Editando Regra de Fiscalização codigo <%= @core_fiscalizacao_regra.codigo %></h3>
+</div>
+
+<div class="row">
+	<div class="span10 offset1">
+
+		<%= form_for(@core_fiscalizacao_regra, :html=>{:class=>"form-horizontal well"}) do |f| %>
+
+		<%= f.hidden_field :usuario_alterou_id, :value=>@usuario_logado.id %>
+
+		<% if @core_fiscalizacao_regra.errors.any? %>
+		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong><%= pluralize(@core_fiscalizacao_regra.errors.count, "erro") %> ao tentar salvar este formulario:</strong>
+
+			<ul>
+				<% @core_fiscalizacao_regra.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+
+
+		<div class="control-group">
+			<%= f.label :codigo, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :codigo, :class=>"input-small", :required=>true %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :descricao, "Descrição", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :descricao, :class=>"input-xxlarge", :required=>true %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :legislacao, "Legislação", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_area :legislacao, :class=>"input-xxlarge", :rows=>"3", :required=>true %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :orientacao, "Orientação", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_area :orientacao, :class=>"input-xxlarge", :rows=>"3", :required=>true %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :fiscalizacao_canal_id, "Canal de Fiscalização", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.collection_select(:fiscalizacao_canal_id,
+		      Core::FiscalizacaoCanal.order('codigo'),
+		      :id, :codigo, {:prompt => true}, :required=>true) %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :negativacao_tipo_id, "Tipo de Negativação", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.collection_select(:negativacao_tipo_id,
+		      Core::NegativacaoTipo.order('codigo'),
+		      :id, :codigo, {:prompt => true}, :required=>true) %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+		
+		<div class="form-actions">
+			<%= f.submit "Atualizar", :class=>"btn btn-primary" %>
+			<button type="reset" class="btn">
+				Cancelar
+			</button>
+		</div>
+		<% end %>
+
+	</div>
+</div>

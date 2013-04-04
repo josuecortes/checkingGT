@@ -1,0 +1,170 @@
+<div class="row">
+	<div class="span10 offset1">
+
+		<%= form_for(@core_liberar_nota, :html=>{:class=>"form-horizontal well"}) do |f| %>
+		<% if @core_liberar_nota.errors.any? %>
+		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong><%= pluralize(@core_liberar_nota.errors.count, "erro") %> ao tentar salvar este formulario:</strong>
+			
+			<ul>
+				<% @core_liberar_nota.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+				
+		
+		<div class="control-group">
+			<%= f.label :nota_retida_id, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.number_field :nota_retida_id, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :fiscalizacao_regra_id, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.number_field :fiscalizacao_regra_id, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :evento_liberacao, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :evento_liberacao, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :datahora_liberacao, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.datetime_select :datahora_liberacao, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :motivo_liberacao, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :motivo_liberacao, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :descricao_liberacao, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_area :descricao_liberacao, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :arrecadacao_codigo, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :arrecadacao_codigo, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :valor_principal, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :valor_principal, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :valor_multa, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :valor_multa, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :valor_correcao_monetaria, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :valor_correcao_monetaria, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :valor_juros, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :valor_juros, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :valor_total, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :valor_total, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :data_inclusao, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.datetime_select :data_inclusao, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :usuario_id, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.number_field :usuario_id, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="form-actions">
+			<%= f.submit :class=>"btn btn-primary" %>
+			<button type="reset" class="btn">
+				Cancelar
+			</button>
+		</div>
+		<% end %>
+
+	</div>
+</div>

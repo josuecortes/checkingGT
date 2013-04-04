@@ -1,0 +1,41 @@
+<div class="page-header">
+	<h3>Lista de Regras de Fiscalização</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+
+			<th>Codigo</th>
+
+			<th>Descricao</th>
+			
+			<th>Canal</th>
+			
+			<th>Negativacao</th>
+				
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @core_fiscalizacao_regras) do |regra| %>
+
+		<td><%= regra.codigo %></td>
+
+		<td><%= regra.descricao %></td>
+		
+		<td><%= regra.fiscalizacao_canal.codigo %></td>
+		
+		<td><%= regra.negativacao_tipo.codigo %></td>
+
+		<td><%= link_to 'Mostrar', core_fiscalizacao_regra_path(regra), :class=>"btn btn-small"%></td>
+		<td><%= link_to 'Editar', edit_core_fiscalizacao_regra_path(regra), :class=>"btn btn-primary btn-small" %></td>
+		<td><%= link_to 'Apagar', core_fiscalizacao_regra_path(regra), :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Nova Regra de Fiscalizacao', new_core_fiscalizacao_regra_path, :class=>"btn btn-success" %>

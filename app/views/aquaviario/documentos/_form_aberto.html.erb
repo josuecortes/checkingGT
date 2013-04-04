@@ -1,0 +1,39 @@
+<div class="row">
+	<div class="span12">
+
+		<%= form_for(@novo_documento, :url => aquaviario_embarque_documentos_path(@embarque), :html=>{:class=>"form-inline well"}) do |f| %>
+
+		<%= f.hidden_field :embarque_id, :value=>@embarque.id %>
+
+		<% if @novo_documento.errors.any? %>
+		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">
+				&times;
+			</button>
+			<strong><%= pluralize(@novo_documento.errors.count, "erro") %> ao tentar salvar este formulario:</strong>
+
+			<ul>
+				<% @novo_documento.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+
+		<%= f.collection_select(:transportadora_destino_id,
+			        Core::Transportadora.order('nomefantasia'),
+			        :id, :nomefantasia, {:prompt => 'Transportadora Destino'}) %>
+		<%= f.collection_select(:unidade_carga_id,
+			        Core::UnidadeCarga.order('tipo'),
+			        :id, :tipo, {:prompt => 'Unidade de Carga'}, :required=>true) %>
+		<%= f.text_field :placa_unidade, :class=>"input-medium", :required=>true, :placeholder=>"Placa Unidade" %>
+		<%= f.text_field :documento, :class=>"input-xlarge", :placeholder=>"Documento Eletronico" %>
+		<%= f.text_field :peso, :class=>"input-small", :placeholder=>"Peso Kg" %>
+		<%= f.text_field :valor, :class=>"input-small", :placeholder=>"Valor R$" %>
+		<%= f.submit "Adicionar", :class=>"btn-success" %>
+
+		<% end %>
+	</div>
+</div>

@@ -1,0 +1,30 @@
+<div class="page-header">
+	<h3>Lista de Pessoa Fisica</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			
+			<th>Nome</th>
+			
+			<th>Cpf</th>
+			
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @pessoas) do |pessoa| %>
+		
+		<td><%= pessoa.nome %></td>
+		
+		<td><%= pessoa.cpf %></td>
+		
+		<td><%= link_to 'Negativacoes', edit_core_npf_path(pessoa), :class=>"btn btn-primary btn-small" %></td>
+		
+		<% end %>
+	</tbody>
+</table>
+
+

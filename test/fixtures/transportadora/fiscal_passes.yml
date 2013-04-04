@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nota_id: 1
+  datahora_emissao: 2013-02-19 09:36:42
+  data_inclusao: 2013-02-19 09:36:42
+  usuario_id: 1
+
+two:
+  nota_id: 1
+  datahora_emissao: 2013-02-19 09:36:42
+  data_inclusao: 2013-02-19 09:36:42
+  usuario_id: 1

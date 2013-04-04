@@ -1,0 +1,143 @@
+<div class="row">
+	<div class="span10 offset1">
+
+		<%= form_for(@aquaviario_porto, :html=>{:class=>"form-horizontal well"}) do |f| %>
+
+		<%= f.hidden_field :transportadora_id, :value=>@usuario_logado.transportadora_id %>
+
+		<% if @aquaviario_porto.errors.any? %>
+		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong><%= pluralize(@aquaviario_porto.errors.count, "erro") %> ao tentar salvar este formulario:</strong>
+
+			<ul>
+				<% @aquaviario_porto.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+
+
+		<div class="control-group">
+			<%= f.label :nome, "* Nome", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :nome, :class=>"input-xxlarge", :required=>true %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :calado, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :calado, :class=>"input-mini" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :capacidade, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :capacidade, :class=>"input-mini" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :endereco, "Endereço", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :endereco, :class=>"input-xxlarge" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :bairro, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :bairro, :class=>"input-xlarge" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :cidade, "* Cidade", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :cidade, :class=>"input-xlarge", :required=>true %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :estado, "* Estado", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :estado, :class=>"input-xlarge", :required=>true %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :cep, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :cep, :class=>"input-medium" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :telefone, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :telefone, :class=>"input-medium" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :fax, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :fax, :class=>"input-medium" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :email, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :email, :class=>"input-xxlarge" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="form-actions">
+			<%= f.submit :class=>"btn btn-primary" %>
+			<button type="reset" class="btn">
+				Cancelar
+			</button>
+		</div>
+		<% end %>
+
+	</div>
+</div>

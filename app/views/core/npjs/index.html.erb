@@ -1,0 +1,30 @@
+<div class="page-header">
+	<h3>Lista de Pessoa Juridica</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			
+			<th>Razao Social</th>
+			
+			<th>CNPJ</th>
+			
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @pessoas) do |pessoa| %>
+		
+		<td><%= pessoa.razaosocial %></td>
+		
+		<td><%= pessoa.cnpj %></td>
+		
+		<td><%= link_to 'Negativacoes', edit_core_npj_path(pessoa), :class=>"btn btn-primary btn-small" %></td>
+		
+		<% end %>
+	</tbody>
+</table>
+
+

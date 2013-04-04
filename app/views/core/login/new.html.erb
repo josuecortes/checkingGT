@@ -1,0 +1,39 @@
+<div class="page-header">
+	<h3>Login de Usuario</h3>
+</div>
+
+<div class="row">
+	<div class="span10 offset1">
+
+		<%= form_tag("/core/login", :class=>"form-horizontal well") do %>
+		<div class="control-group">
+			<label class="control-label">E-mail</label>
+			<div class="controls">
+				<%= text_field :login, :email, :class=>"input-xlarge", :placeholder=>"nome@servidor.com.br", :required=>true %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label">Senha</label>
+			<div class="controls">
+				<%= password_field :login, :senha, :class=>"input-xlarge", :placeholder=>"Senha", :required=>true %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="form-actions">
+			<%= submit_tag "Logar", :class=>"btn btn-primary" %>
+			<button type="reset" class="btn">
+				Cancelar
+			</button>
+		</div>
+
+		<% end %>
+
+	</div>
+</div>

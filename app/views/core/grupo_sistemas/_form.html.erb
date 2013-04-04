@@ -1,0 +1,38 @@
+<%= form_for(@grupo_sistema, :url => core_grupo_grupo_sistemas_path(@grupo)) do |f| %>
+  <% if @grupo_sistema.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@grupo_sistema.errors.count, "error") %> prohibited this core_usuario_grupo from being saved:</h2>
+
+      <ul>
+      <% @grupo_sistema.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	
+  <table>
+  	<tr>
+  		<td>Adicionar</td>
+  		<td>Sistema</td>
+  		<td>Modulo</td>
+  	</tr>
+  	
+	
+  <% @sf.each do |sistema| %>
+  <tr>
+  
+  	<td><%= check_box_tag "sistemas[]", sistema.id %></td>
+    <td><%= sistema.nome %></td>
+    <td><%= sistema.modulo.nome %></td>
+     
+  
+  </tr>
+  <% end %>
+  
+  </table>
+  
+  <div class="actions">
+    <%= f.submit "Adicionar Selecionados" %>
+  </div>
+<% end %>

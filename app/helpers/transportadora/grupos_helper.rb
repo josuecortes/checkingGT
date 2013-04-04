@@ -1,0 +1,2 @@
+module Transportadora::GruposHelper
+end

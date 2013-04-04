@@ -1,0 +1,87 @@
+<div class="page-header">
+	<h3>Exibindo core_nota_retida</h3>
+</div>
+
+
+<p>
+	<strong>Nota:</strong>
+	<%= @core_nota_retida.nota_id %>
+</p>
+
+
+<p>
+	<strong>Fiscalizacao regra:</strong>
+	<%= @core_nota_retida.fiscalizacao_regra_id %>
+</p>
+
+
+<p>
+	<strong>Datahora fiscalizacao:</strong>
+	<%= @core_nota_retida.datahora_fiscalizacao %>
+</p>
+
+
+<p>
+	<strong>Valor principal:</strong>
+	<%= @core_nota_retida.valor_principal %>
+</p>
+
+
+<p>
+	<strong>Valor multa:</strong>
+	<%= @core_nota_retida.valor_multa %>
+</p>
+
+
+<p>
+	<strong>Valor correcao monetaria:</strong>
+	<%= @core_nota_retida.valor_correcao_monetaria %>
+</p>
+
+
+<p>
+	<strong>Valor juros:</strong>
+	<%= @core_nota_retida.valor_juros %>
+</p>
+
+
+<p>
+	<strong>Valor total:</strong>
+	<%= @core_nota_retida.valor_total %>
+</p>
+
+
+<p>
+	<strong>Data entrada:</strong>
+	<%= @core_nota_retida.data_entrada %>
+</p>
+
+
+<p>
+	<strong>Data vencimento:</strong>
+	<%= @core_nota_retida.data_vencimento %>
+</p>
+
+
+<p>
+	<strong>Data pagamento:</strong>
+	<%= @core_nota_retida.data_pagamento %>
+</p>
+
+
+<p>
+	<strong>Data inclusao:</strong>
+	<%= @core_nota_retida.data_inclusao %>
+</p>
+
+
+<p>
+	<strong>Usuario:</strong>
+	<%= @core_nota_retida.usuario_id %>
+</p>
+
+
+
+<%= link_to 'Editar', edit_core_nota_retida_path(@core_nota_retida) %> |
+<%= link_to 'Voltar', core_nota_retidas_path %>
+

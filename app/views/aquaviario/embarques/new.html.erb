@@ -1,0 +1,95 @@
+
+<div class="page-header">
+	<h3><%= link_to 'Voltar', aquaviario_embarques_path %> | Novo Embarque</h3>
+</div>
+
+<div class="row">
+	<div class="span10 offset1">
+
+		<%= form_for(@aquaviario_embarque, :html=>{:class=>"form-horizontal well"}) do |f| %>
+
+		<%= f.hidden_field :transportadora_id, :value=>@usuario_logado.transportadora_id %>
+		<%= f.hidden_field :usuario_id, :value=>@usuario_logado.id %>
+		<%= f.hidden_field :situacao, :value=>"Aberto" %>
+
+		<% if @aquaviario_embarque.errors.any? %>
+		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong><%= pluralize(@aquaviario_embarque.errors.count, "erro") %> ao tentar salvar este formulario:</strong>
+
+			<ul>
+				<% @aquaviario_embarque.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+
+
+		<div class="control-group">
+			<%= f.label :balsa, "* Balsa", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :balsa, :class=>"input-xxlarge", :required=>true %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :data_saida, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.date_select :data_saida, :class=>"input-mini" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :data_previsao, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.date_select :data_previsao, :class=>"input-mini" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :porto_saida_id, "* Porto Saida", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.collection_select(:porto_saida_id,
+		        Aquaviario::Porto.da_transportadora(@usuario_logado.transportadora_id).order('nome'),
+		        :id, :nome, {:prompt => true}, :required=>true) %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :porto_destino_id, "* Porto Destino", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.collection_select(:porto_destino_id,
+		        Aquaviario::Porto.da_transportadora(@usuario_logado.transportadora_id).order('nome'),
+		        :id, :nome, {:prompt => true}, :required=>true) %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="form-actions">
+			<%= f.submit :class=>"btn btn-primary" %>
+			<button type="reset" class="btn">
+				Cancelar
+			</button>
+		</div>
+		<% end %>
+
+	</div>
+</div>
+

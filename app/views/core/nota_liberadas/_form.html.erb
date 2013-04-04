@@ -1,0 +1,160 @@
+<div class="row">
+	<div class="span10 offset1">
+
+		<%= form_for(@core_nota_liberada, :html=>{:class=>"form-horizontal well"}) do |f| %>
+		<% if @core_nota_liberada.errors.any? %>
+		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong><%= pluralize(@core_nota_liberada.errors.count, "erro") %> ao tentar salvar este formulario:</strong>
+			
+			<ul>
+				<% @core_nota_liberada.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+				
+		
+		<div class="control-group">
+			<%= f.label :nota_id, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.number_field :nota_id, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :datahora_liberacao, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.datetime_select :datahora_liberacao, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :fiscal_passe_id, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.number_field :fiscal_passe_id, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :valor_principal, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :valor_principal, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :valor_multa, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :valor_multa, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :valor_correcao_monetaria, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :valor_correcao_monetaria, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :valor_juros, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :valor_juros, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :valor_total, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :valor_total, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :data_entrada, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.datetime_select :data_entrada, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :data_vencimento, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.datetime_select :data_vencimento, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :data_pagamento, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.datetime_select :data_pagamento, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :data_inclusao, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.datetime_select :data_inclusao, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :usuario_id, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.number_field :usuario_id, :class=>"input-xlarge" %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="form-actions">
+			<%= f.submit :class=>"btn btn-primary" %>
+			<button type="reset" class="btn">
+				Cancelar
+			</button>
+		</div>
+		<% end %>
+
+	</div>
+</div>

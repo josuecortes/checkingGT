@@ -1,0 +1,61 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', core_fiscalizacao_canais_path %> | Novo Canal de Fiscalização</h3>
+</div>
+
+<div class="row">
+	<div class="span10 offset1">
+
+		<%= form_for(@core_fiscalizacao_canal, :html=>{:class=>"form-horizontal well"}) do |f| %>
+		
+		<%= f.hidden_field :usuario_id, :value=>@usuario_logado.id %>
+		
+		<% if @core_fiscalizacao_canal.errors.any? %>
+		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong><%= pluralize(@core_fiscalizacao_canal.errors.count, "erro") %> ao tentar salvar este formulario:</strong>
+			
+			<ul>
+				<% @core_fiscalizacao_canal.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+				
+		
+		<div class="control-group">
+			<%= f.label :codigo, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :codigo, :class=>"input-medium", :required=>true %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :descricao, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :descricao, :class=>"input-xxlarge", :required=>true %>
+				<p class="help-block">
+					
+				</p>
+			</div>
+		</div>
+		
+		<div class="form-actions">
+			<%= f.submit "Salvar", :class=>"btn btn-primary" %>
+			<button type="reset" class="btn">
+				Cancelar
+			</button>
+		</div>
+		<% end %>
+
+	</div>
+</div>
+
+
+
+

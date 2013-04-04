@@ -1,0 +1,33 @@
+<div class="page-header">
+	<h3>Lista de Tipos de Negativação</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+
+			<th>Codigo</th>
+
+			<th>Descricao</th>
+
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @core_negativacao_tipos) do |core_negativacao_tipo| %>
+
+		<td><%= core_negativacao_tipo.codigo %></td>
+
+		<td><%= core_negativacao_tipo.descricao %></td>
+
+		<td><%= link_to 'Mostrar', core_negativacao_tipo, :class=>"btn btn-small"%></td>
+		<td><%= link_to 'Editar', edit_core_negativacao_tipo_path(core_negativacao_tipo), :class=>"btn btn-primary btn-small" %></td>
+		<td><%= link_to 'Apagar', core_negativacao_tipo, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Novo Tipo de Negativacao', new_core_negativacao_tipo_path, :class=>"btn btn-success" %>

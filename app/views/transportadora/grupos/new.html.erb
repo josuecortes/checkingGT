@@ -1,0 +1,55 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', transportadora_grupos_path %> | Novo Grupo</h3>
+</div>
+
+<%= form_for(@grupo, :url=> transportadora_grupos_path(@grupo), :html=>{:class=>"form-horizontal well"}) do |f| %>
+
+<%= f.hidden_field(:transportadora_id, :value=>@usuario_logado.transportadora_id) %>
+
+<%= f.hidden_field(:editavel, :value=>true) %>
+
+<% if @grupo.errors.any? %>
+<div class="alert alert-error">
+	<button type="button" class="close" data-dismiss="alert">
+		&times;
+	</button>
+	<strong><%= pluralize(@grupo.errors.count, "erro") %> ao tentar salvar este formulario:</strong>
+
+	<ul>
+		<% @grupo.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<div class="control-group">
+	<%= f.label :nome, :class=>"control-label" %>
+	<div class="controls">
+		<%= f.text_field :nome, :class=>"input-xxlarge", :required=>true %>
+		<p class="help-block">
+
+		</p>
+	</div>
+</div>
+
+<div class="control-group">
+	<%= f.label :sigla, :class=>"control-label" %>
+	<div class="controls">
+		<%= f.text_field :sigla, :class=>"input-medium", :required=>true %>
+		<p class="help-block">
+
+		</p>
+	</div>
+</div>
+
+
+<div class="form-actions">
+	<%= f.submit :class=>"btn btn-primary" %>
+	<button type="reset" class="btn">
+		Cancelar
+	</button>
+</div>
+<% end %>

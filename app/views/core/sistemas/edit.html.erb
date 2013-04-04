@@ -1,0 +1,100 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', core_modulo_sistemas_path(@core_sistema.modulo_id) %> | Editando Sistema <%= @core_sistema.nome %> do Modulo <%= @core_modulo.nome %></h3>
+</div>
+
+<!-- MUITA ATENÇÃO NESTA PARTE, TEM QUE COLOCAR A ROTA PARA O CONTROLADOR ENTENDER QUE É UMA UPDATE SISTEMA pq vai atualizar apenas 1 NO PLURAL  LA NO CREATE A VOLTA SERA SIMPLISMENTE ISSO: redirect_to core_modulo_sistema_path -->
+<%= form_for(@core_sistema, :html=>{:class=>"form-horizontal well"}, :url=>core_modulo_sistema_path(@core_modulo, @core_sistema)) do |f| %>
+
+<%= f.hidden_field(:modulo_id, :value=>@core_modulo.id) %>
+
+<% if @core_sistema.errors.any? %>
+<div class="alert alert-error">
+	<strong><%= pluralize(@core_sistema.errors.count, "erro") %> ao tentar salvar este formulario:</strong>
+
+	<ul>
+		<% @core_sistema.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<div class="control-group">
+	<%= f.label :nome, :class=>"control-label" %>
+	<div class="controls">
+		<%= f.text_field :nome, :class=>"input-xxlarge", :required=>true %>
+		<p class="help-block">
+
+		</p>
+	</div>
+</div>
+
+<div class="control-group">
+	<%= f.label :sigla, :class=>"control-label" %>
+	<div class="controls">
+		<%= f.text_field :sigla, :class=>"input-medium", :required=>true %>
+		<p class="help-block">
+
+		</p>
+	</div>
+</div>
+
+<div class="control-group">
+	<%= f.label :apelido, :class=>"control-label" %>
+	<div class="controls">
+		<%= f.text_field :apelido, :class=>"input-medium" %>
+		<p class="help-block">
+
+		</p>
+	</div>
+</div>
+
+<div class="control-group">
+	<%= f.label :url, :class=>"control-label" %>
+	<div class="controls">
+		<%= f.text_field :url, :class=>"input-xlarge" %>
+		<p class="help-block">
+
+		</p>
+	</div>
+</div>
+
+<div class="control-group">
+	<%= f.label :controlador, :class=>"control-label" %>
+	<div class="controls">
+		<%= f.text_field :controlador, :class=>"input-xlarge", :required=>true %>
+		<p class="help-block">
+
+		</p>
+	</div>
+</div>
+
+<div class="control-group">
+	<%= f.label :icone, :class=>"control-label" %>
+	<div class="controls">
+		<%= f.text_field :icone, :class=>"input-xlarge" %>
+		<p class="help-block">
+
+		</p>
+	</div>
+</div>
+
+<div class="control-group">
+	<%= f.label :status, :class=>"control-label" %>
+	<div class="controls">
+		<%= f.check_box :status, :class=>"input-xlarge" %>
+		<p class="help-block">
+
+		</p>
+	</div>
+</div>
+
+<div class="form-actions">
+			<%= f.submit "Salvar", :class=>"btn btn-primary" %>
+			<button type="reset" class="btn">
+				Cancelar
+			</button>
+		</div>
+<% end %>

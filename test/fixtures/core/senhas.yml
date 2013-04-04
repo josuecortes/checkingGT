@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  usuario_id: 1
+  senha_encriptada: MyString
+  chave_criptografia: MyString
+
+two:
+  usuario_id: 1
+  senha_encriptada: MyString
+  chave_criptografia: MyString

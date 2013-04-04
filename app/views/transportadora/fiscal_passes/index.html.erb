@@ -1,0 +1,44 @@
+<div class="page-header">
+	<h3>Lista de transportadora_fiscal_passes</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			
+			<th>Nota</th>
+			
+			<th>Datahora emissao</th>
+			
+			<th>Data inclusao</th>
+			
+			<th>Usuario</th>
+			
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @transportadora_fiscal_passes) do |transportadora_fiscal_pass| %>
+		
+		<td><%= transportadora_fiscal_pass.nota_id %></td>
+		
+		<td><%= transportadora_fiscal_pass.datahora_emissao %></td>
+		
+		<td><%= transportadora_fiscal_pass.data_inclusao %></td>
+		
+		<td><%= transportadora_fiscal_pass.usuario_id %></td>
+		
+		<td><%= link_to 'Mostrar', transportadora_fiscal_pass, :class=>"btn btn-small"%></td>
+		<td><%= link_to 'Editar', edit_transportadora_fiscal_pass_path(transportadora_fiscal_pass), :class=>"btn btn-primary btn-small" %></td>
+		<td><%= link_to 'Apagar', transportadora_fiscal_pass, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Novo(a) Fiscal passe', new_transportadora_fiscal_pass_path, :class=>"btn btn-success" %>
+

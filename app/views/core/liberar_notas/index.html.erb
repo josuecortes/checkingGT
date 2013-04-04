@@ -1,0 +1,84 @@
+<div class="page-header">
+	<h3>Lista de core_liberar_notas</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			
+			<th>Nota retida</th>
+			
+			<th>Fiscalizacao regra</th>
+			
+			<th>Evento liberacao</th>
+			
+			<th>Datahora liberacao</th>
+			
+			<th>Motivo liberacao</th>
+			
+			<th>Descricao liberacao</th>
+			
+			<th>Arrecadacao codigo</th>
+			
+			<th>Valor principal</th>
+			
+			<th>Valor multa</th>
+			
+			<th>Valor correcao monetaria</th>
+			
+			<th>Valor juros</th>
+			
+			<th>Valor total</th>
+			
+			<th>Data inclusao</th>
+			
+			<th>Usuario</th>
+			
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @core_liberar_notas) do |core_liberar_nota| %>
+		
+		<td><%= core_liberar_nota.nota_retida_id %></td>
+		
+		<td><%= core_liberar_nota.fiscalizacao_regra_id %></td>
+		
+		<td><%= core_liberar_nota.evento_liberacao %></td>
+		
+		<td><%= core_liberar_nota.datahora_liberacao %></td>
+		
+		<td><%= core_liberar_nota.motivo_liberacao %></td>
+		
+		<td><%= core_liberar_nota.descricao_liberacao %></td>
+		
+		<td><%= core_liberar_nota.arrecadacao_codigo %></td>
+		
+		<td><%= core_liberar_nota.valor_principal %></td>
+		
+		<td><%= core_liberar_nota.valor_multa %></td>
+		
+		<td><%= core_liberar_nota.valor_correcao_monetaria %></td>
+		
+		<td><%= core_liberar_nota.valor_juros %></td>
+		
+		<td><%= core_liberar_nota.valor_total %></td>
+		
+		<td><%= core_liberar_nota.data_inclusao %></td>
+		
+		<td><%= core_liberar_nota.usuario_id %></td>
+		
+		<td><%= link_to 'Mostrar', core_liberar_nota, :class=>"btn btn-small"%></td>
+		<td><%= link_to 'Editar', edit_core_liberar_nota_path(core_liberar_nota), :class=>"btn btn-primary btn-small" %></td>
+		<td><%= link_to 'Apagar', core_liberar_nota, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Novo(a) Liberar nota', new_core_liberar_nota_path, :class=>"btn btn-success" %>
+

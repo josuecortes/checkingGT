@@ -1,0 +1,55 @@
+<h3>Adicionar Documento</h3>
+
+<%= render 'form_aberto' %>
+
+
+<h3>Documentos</h3>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			<th>Documento</th>
+			<th>Transportadora Destino</th>
+			<th>Tipo de Unidade de Carga</th>
+			<th>Placa da Unidade de Carga</th>
+			<th>Peso Kg</th>
+			<th>Valor R$</th>
+			<th>Adicionado em</th>
+
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @embarque.documentos) do |documento| %>
+		<td><%= documento.documento %></td>
+		<td><%= documento.transportadora_destino.nomefantasia %></td>
+		<td><%= documento.unidade_carga.tipo %></td>
+		<td><%= documento.placa_unidade %></td>
+		<td><%= documento.peso %></td>
+		<td><%= documento.valor %></td>
+		<td><%= documento.created_at.to_s_br %></td>
+
+		<td><%= link_to 'Apagar', aquaviario_embarque_documento_path(@embarque, documento), :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+
+    <% end %>
+	</tbody>
+</table>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			<th>Numero de Unidades de Carga</th>
+			<th>Peso Total</th>
+			<th>Valor Total</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+		  <td><%= @embarque.documentos.count %></td>
+		  <td><%= @embarque.documentos.sum('peso') %> Kg</td>
+		  <td><%= @embarque.documentos.sum('valor').real_contabil %></td>
+		</tr>
+	</tbody>
+</table>

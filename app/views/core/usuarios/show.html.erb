@@ -1,0 +1,29 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', core_usuarios_path %> | Exibindo Usuario <%= @core_usuario.nome %></h3>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @core_usuario.nome %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @core_usuario.email %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @core_usuario.status %>
+</p>
+
+<p>
+  <b>Mudarsenha:</b>
+  <%= @core_usuario.mudarsenha %>
+</p>
+
+
+<%= link_to 'Editar', edit_core_usuario_path(@core_usuario) %> |
+<%= link_to 'Voltar', core_usuarios_path %>

@@ -1,0 +1,14 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', core_unidade_cargas_path %> | Exibindo Unidade de Carga <%= @core_unidade_carga.tipo %></h3>
+</div>
+
+
+<p>
+	<strong>Tipo:</strong>
+	<%= @core_unidade_carga.tipo %>
+</p>
+
+
+
+<%= link_to 'Editar', edit_core_unidade_carga_path(@core_unidade_carga) %> |
+<%= link_to 'Voltar', core_unidade_cargas_path %>

@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  codigo: MyString
+  cnpj_origem: MyString
+  cnpj_destino: MyString
+  cpf_destino: MyString
+  uf_origem: MyString
+  uf_destino: MyString
+  data_emissao: 2013-02-19 09:33:20
+  data_entrada: 2013-02-19 09:33:20
+  valor_produtos: 1.5
+  valor_total: 1.5
+  numero_pin_suframa: MyString
+  valor_st: 1.5
+  valor_icms: 1.5
+  valor_bc_st: 1.5
+  valor_icms: 1.5
+  valor_bc_st: 1.5
+  valor_bc_icms: 1.5
+  numero_nota: MyString
+  qtd_itens_nfe: 1
+  usuario_id: 1
+
+two:
+  codigo: MyString
+  cnpj_origem: MyString
+  cnpj_destino: MyString
+  cpf_destino: MyString
+  uf_origem: MyString
+  uf_destino: MyString
+  data_emissao: 2013-02-19 09:33:20
+  data_entrada: 2013-02-19 09:33:20
+  valor_produtos: 1.5
+  valor_total: 1.5
+  numero_pin_suframa: MyString
+  valor_st: 1.5
+  valor_icms: 1.5
+  valor_bc_st: 1.5
+  valor_icms: 1.5
+  valor_bc_st: 1.5
+  valor_bc_icms: 1.5
+  numero_nota: MyString
+  qtd_itens_nfe: 1
+  usuario_id: 1

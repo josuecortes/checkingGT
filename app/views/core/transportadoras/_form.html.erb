@@ -1,0 +1,161 @@
+<div class="row">
+	<div class="span10 offset1">
+
+		<%= form_for(@core_transportadora, :html=>{:class=>"form-horizontal well"}) do |f| %>
+		<% if @core_transportadora.errors.any? %>
+		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong><%= pluralize(@core_transportadora.errors.count, "erro") %> ao tentar salvar este formulario:</strong>
+
+			<ul>
+				<% @core_transportadora.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+
+
+		<div class="control-group">
+			<%= f.label :cnpj, "Cnpj", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :cnpj, :class=>"input-large", :required=>true %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :inscricaoestadual, "Inscrição Estadual", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :inscricaoestadual, :class=>"input-large", :required=>true %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :nomefantasia, "Nome Fantasia", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :nomefantasia, :class=>"input-xxlarge", :required=>true %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :razaosocial, "Razão Social", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :razaosocial, :class=>"input-xlarge", :required=>true %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<%= f.label :tipo, "Tipo Transportador", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.select :tipo, options_for_select(["Aquaviario", "Rodoviario", "Aereo"], @core_transportadora.tipo), :class=>"input-large", :required=>true %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		
+		<div class="control-group">
+			<%= f.label :endereco, "Endereço", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :endereco, :class=>"input-xxlarge" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :bairro, "Bairro", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :bairro, :class=>"input-xlarge" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :cidade, "Cidade", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :cidade, :class=>"input-xlarge" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :estado, "Estado", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :estado, :class=>"input-large" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :cep, "Cep", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :cep, :class=>"input-medium" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :email, "E-mail", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :email, :class=>"input-xxlarge", :required=>true %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :telefone, "Telefone", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :telefone, :class=>"input-medium" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :fax, "Fax", :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :fax, :class=>"input-medium" %>
+				<p class="help-block">
+
+				</p>
+			</div>
+		</div>
+
+		<div class="form-actions">
+			<%= f.submit :class=>"btn btn-primary" %>
+			<button type="reset" class="btn">
+				Cancelar
+			</button>
+		</div>
+		<% end %>
+
+	</div>
+</div>

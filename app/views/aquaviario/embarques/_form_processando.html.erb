@@ -1,0 +1,98 @@
+
+<div class="row">
+	<div class="span10 offset1">
+
+		<form class="form-horizontal well">
+      <button class="btn btn-large btn-block btn-danger" type="button">Aguarde o Fim do Processamento</button>
+		</form>
+
+    <h3>Dados do Embarque</h3>
+
+		<form class="form-horizontal well">
+
+      <div class="control-group">
+        <label class="control-label">Criado em</label>
+        <div class="controls">
+          <input type="text" class="input-medium" readonly="readonly" value="<%= @aquaviario_embarque.created_at.to_s_br %>">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label">Criado por</label>
+        <div class="controls">
+          <input type="text" class="input-xxlarge" readonly="readonly" value="<%= @aquaviario_embarque.usuario.nome %>">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label">Balsa</label>
+        <div class="controls">
+          <input type="text" class="input-xxlarge" readonly="readonly" value="<%= @aquaviario_embarque.balsa %>">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label">Data Saida</label>
+        <div class="controls">
+          <input type="text" class="input-medium" readonly="readonly" value="<%= @aquaviario_embarque.data_saida.to_s_br %>">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label">Previsão Chegada</label>
+        <div class="controls">
+          <input type="text" class="input-medium" readonly="readonly" value="<%= @aquaviario_embarque.data_previsao.to_s_br %>">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label">Porto Saida</label>
+        <div class="controls">
+          <input type="text" class="input-xlarge" readonly="readonly" value="<%= @aquaviario_embarque.porto_saida.nome %>">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label">Porto Destino</label>
+        <div class="controls">
+          <input type="text" class="input-xlarge" readonly="readonly" value="<%= @aquaviario_embarque.porto_destino .nome %>">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label">Fechado em</label>
+        <div class="controls">
+          <input type="text" class="input-medium" readonly="readonly" value="<%= @aquaviario_embarque.data_fechou.to_s_br %>">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label">Fechado por</label>
+        <div class="controls">
+          <input type="text" class="input-xxlarge" readonly="readonly" value="<%= @aquaviario_embarque.usuario_fechou.nome %>">
+        </div>
+      </div>
+
+    </form>
+
+    <h3>Documentos do Embarque</h3>
+
+    <table class="table table-bordered table-striped table-hover">
+	    <thead>
+		    <tr>
+          <th>Tipo</th>
+			    <th>Documento</th>
+			    <th>Adicionado em</th>
+    		</tr>
+    	</thead>
+    	<tbody>
+		    <%= content_tag_for(:tr, @aquaviario_embarque.documentos) do |documento| %>
+		      <td><%= documento.tipo %></td>
+          <td><%= documento.documento %></td>
+          <td><%= documento.created_at.to_s_br %></td>
+    		<% end %>
+    	</tbody>
+    </table>
+
+	</div>
+</div>

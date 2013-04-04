@@ -1,0 +1,93 @@
+<div class="page-header">
+	<h3>Exibindo core_liberar_nota</h3>
+</div>
+
+
+<p>
+	<strong>Nota retida:</strong>
+	<%= @core_liberar_nota.nota_retida_id %>
+</p>
+
+
+<p>
+	<strong>Fiscalizacao regra:</strong>
+	<%= @core_liberar_nota.fiscalizacao_regra_id %>
+</p>
+
+
+<p>
+	<strong>Evento liberacao:</strong>
+	<%= @core_liberar_nota.evento_liberacao %>
+</p>
+
+
+<p>
+	<strong>Datahora liberacao:</strong>
+	<%= @core_liberar_nota.datahora_liberacao %>
+</p>
+
+
+<p>
+	<strong>Motivo liberacao:</strong>
+	<%= @core_liberar_nota.motivo_liberacao %>
+</p>
+
+
+<p>
+	<strong>Descricao liberacao:</strong>
+	<%= @core_liberar_nota.descricao_liberacao %>
+</p>
+
+
+<p>
+	<strong>Arrecadacao codigo:</strong>
+	<%= @core_liberar_nota.arrecadacao_codigo %>
+</p>
+
+
+<p>
+	<strong>Valor principal:</strong>
+	<%= @core_liberar_nota.valor_principal %>
+</p>
+
+
+<p>
+	<strong>Valor multa:</strong>
+	<%= @core_liberar_nota.valor_multa %>
+</p>
+
+
+<p>
+	<strong>Valor correcao monetaria:</strong>
+	<%= @core_liberar_nota.valor_correcao_monetaria %>
+</p>
+
+
+<p>
+	<strong>Valor juros:</strong>
+	<%= @core_liberar_nota.valor_juros %>
+</p>
+
+
+<p>
+	<strong>Valor total:</strong>
+	<%= @core_liberar_nota.valor_total %>
+</p>
+
+
+<p>
+	<strong>Data inclusao:</strong>
+	<%= @core_liberar_nota.data_inclusao %>
+</p>
+
+
+<p>
+	<strong>Usuario:</strong>
+	<%= @core_liberar_nota.usuario_id %>
+</p>
+
+
+
+<%= link_to 'Editar', edit_core_liberar_nota_path(@core_liberar_nota) %> |
+<%= link_to 'Voltar', core_liberar_notas_path %>
+

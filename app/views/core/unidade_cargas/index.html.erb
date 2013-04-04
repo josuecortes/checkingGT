@@ -1,0 +1,30 @@
+<div class="page-header">
+	<h3>Lista de Unidades de Carga</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+
+			<th>Tipo</th>
+
+			<th></th>
+
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @core_unidade_cargas) do |core_unidade_carga| %>
+
+		<td><%= core_unidade_carga.tipo %></td>
+
+		<td><%= link_to 'Mostrar', core_unidade_carga, :class=>"btn btn-small"%>
+		<%= link_to 'Editar', edit_core_unidade_carga_path(core_unidade_carga), :class=>"btn btn-primary btn-small" %>
+		<%= link_to 'Apagar', core_unidade_carga, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Nova Unidade de Carga', new_core_unidade_carga_path, :class=>"btn btn-success" %>

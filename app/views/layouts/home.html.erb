@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="utf-8">
+		<title> CheckinGT </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="A calm, blue sky.">
+		<meta name="author" content="Thomas Park">
+
+
+
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+
+
+
+	</head>
+
+	<body class="preview" data-spy="scroll" data-target=".subnav" data-offset="80">
+
+		<!-- Navbar
+		================================================== -->
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+					<a class="brand" href="/home">CheckinGT</a>
+					<div class="nav-collapse" id="main-menu">
+
+						<ul class="nav pull-right" id="main-menu-right">
+
+							<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#"> Login <b class="caret"></b></a>
+								<ul class="dropdown-menu" id="swatch-menu">
+
+									<li>
+
+										<%= form_tag("/core/login", :class=>"form-horizontal well") do %>
+										<div class="control-group">
+											<label class="control-label">E-mail</label>
+											<div class="controls">
+												<%= text_field :login, :email, :class=>"input-xlarge", :placeholder=>"nome@servidor.com.br", :required=>true %>
+												<p class="help-block">
+
+												</p>
+											</div>
+										</div>
+
+										<div class="control-group">
+											<label class="control-label">Senha</label>
+											<div class="controls">
+												<%= password_field :login, :senha, :class=>"input-xlarge", :placeholder=>"Senha", :required=>true %>
+												<p class="help-block">
+
+												</p>
+											</div>
+										</div>
+
+										<div class="form-actions">
+											<%= submit_tag "Logar", :class=>"btn btn-primary" %>
+											<button type="reset" class="btn">
+												Cancelar
+											</button>
+										</div>
+
+										<% end %>
+
+									</li>
+							</li>
+						</ul>
+						</ul>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+
+			<!-- Masthead
+			================================================== -->
+			<header class="jumbotron subhead" id="overview">
+				<div class="row">
+					<div class="hero-unit">
+						<h1>CheckinGT</h1>
+						<p class="lead">
+							Secretaria da Receita Estadual
+						</p>
+					</div>
+					<div class="span6">
+
+					</div>
+				</div>
+
+
+			</header>
+
+			<%= yield %>
+
+		</div><!-- /container -->
+	<br><br><br><br><br><br>
+	<div class="navbar navbar-inverse navbar-fixed-bottom">
+		<div class="navbar-inner">
+			<div class="container offset5">
+				<a class="brand" href="#">Secretaria da Receita Estadual 2013</a>
+			</div>
+		</div>
+	</div>
+
+	</body>
+</html>

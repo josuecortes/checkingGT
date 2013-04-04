@@ -1,0 +1,33 @@
+<div class="page-header">
+	<h3>Exibindo transportadora_fiscal_pass</h3>
+</div>
+
+
+<p>
+	<strong>Nota:</strong>
+	<%= @transportadora_fiscal_pass.nota_id %>
+</p>
+
+
+<p>
+	<strong>Datahora emissao:</strong>
+	<%= @transportadora_fiscal_pass.datahora_emissao %>
+</p>
+
+
+<p>
+	<strong>Data inclusao:</strong>
+	<%= @transportadora_fiscal_pass.data_inclusao %>
+</p>
+
+
+<p>
+	<strong>Usuario:</strong>
+	<%= @transportadora_fiscal_pass.usuario_id %>
+</p>
+
+
+
+<%= link_to 'Editar', edit_transportadora_fiscal_pass_path(@transportadora_fiscal_pass) %> |
+<%= link_to 'Voltar', transportadora_fiscal_passes_path %>
+

@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nota_retida_id: 1
+  fiscalizacao_regra_id: 1
+  evento_liberacao: MyString
+  datahora_liberacao: 2013-02-19 09:36:11
+  motivo_liberacao: MyString
+  descricao_liberacao: MyText
+  arrecadacao_codigo: MyString
+  valor_principal: 1.5
+  valor_multa: 1.5
+  valor_correcao_monetaria: 1.5
+  valor_juros: 1.5
+  valor_total: 1.5
+  data_inclusao: 2013-02-19 09:36:11
+  usuario_id: 1
+
+two:
+  nota_retida_id: 1
+  fiscalizacao_regra_id: 1
+  evento_liberacao: MyString
+  datahora_liberacao: 2013-02-19 09:36:11
+  motivo_liberacao: MyString
+  descricao_liberacao: MyText
+  arrecadacao_codigo: MyString
+  valor_principal: 1.5
+  valor_multa: 1.5
+  valor_correcao_monetaria: 1.5
+  valor_juros: 1.5
+  valor_total: 1.5
+  data_inclusao: 2013-02-19 09:36:11
+  usuario_id: 1

@@ -1,0 +1,16 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', core_grupos_path %> | Exibindo Grupo <%= @grupo.nome %></h3>
+</div>
+
+<p>
+  <b>Nome:</b>
+  <%= @grupo.nome %>
+</p>
+
+<p>
+  <b>Sigla:</b>
+  <%= @grupo.sigla %>
+</p>
+
+<%= link_to 'Editar', edit_core_grupo_path(@grupo) %> |
+<%= link_to 'Voltar', core_grupos_path %>

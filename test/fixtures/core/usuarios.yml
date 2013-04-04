@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nome: MyString
+  login: MyString
+  email: MyString
+  status: false
+  mudarsenha: false
+  avatar: MyString
+  numlogin: 1
+  ultimadataacesso: 2012-12-19 10:46:54
+  correntedatalogin: 2012-12-19 10:46:54
+  ultimadatalogin: 2012-12-19 10:46:54
+  correnteloginip: 
+  ultimologinip: MyString
+
+two:
+  nome: MyString
+  login: MyString
+  email: MyString
+  status: false
+  mudarsenha: false
+  avatar: MyString
+  numlogin: 1
+  ultimadataacesso: 2012-12-19 10:46:54
+  correntedatalogin: 2012-12-19 10:46:54
+  ultimadatalogin: 2012-12-19 10:46:54
+  correnteloginip: 
+  ultimologinip: MyString

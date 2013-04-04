@@ -1,0 +1,22 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', core_modulos_path %> | Exibindo Modulo <%= @core_modulo.nome %></h3>
+</div>
+
+<p>
+  <b>Nome:</b>
+  <%= @core_modulo.nome %>
+</p>
+
+<p>
+  <b>Sigla:</b>
+  <%= @core_modulo.sigla %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @core_modulo.status %>
+</p>
+
+
+<%= link_to 'Editar', edit_core_modulo_path(@core_modulo) %> |
+<%= link_to 'Voltar', core_modulos_path %>

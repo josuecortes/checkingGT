@@ -1,0 +1,44 @@
+<div class="page-header">
+	<h3>Lista de Pessoa Juridica</h3>
+</div>
+
+<%= form_for(@core_pessoa_juridica, method: :get, :url=>core_pessoa_juridicas_path, :html=>{:class=>"form-inline"}) do |f| %>
+    <%= f.text_field :razaosocial, :class=>"input-xlarge", :placeholder=>"Razao Social" %>
+    <%= f.text_field :cnpj, :class=>"input-large", :placeholder=>"CNPJ" %>
+    <button type="submit" class="btn">Localizar</button>
+<% end %>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+
+			<th>Cnpj</th>
+
+			<th>Razaosocial</th>
+
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @core_pessoa_juridicas) do |core_pessoa_juridica| %>
+
+		<td><%= core_pessoa_juridica.cnpj %></td>
+
+		<td><%= core_pessoa_juridica.razaosocial %></td>
+
+
+		<td><%= link_to 'Mostrar', core_pessoa_juridica, :class=>"btn btn-small"%></td>
+		<td><%= link_to 'Editar', edit_core_pessoa_juridica_path(core_pessoa_juridica), :class=>"btn btn-primary btn-small" %></td>
+		<td><%= link_to 'Apagar', core_pessoa_juridica, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		<% end %>
+	</tbody>
+</table>
+
+<div class="pagination pagination-centered">
+	<%= will_paginate @core_pessoa_juridicas, :previous_label => '<<', :next_label => '>>' %>
+</div>
+
+<br />
+
+<%= link_to 'Nova Pessoa juridica', new_core_pessoa_juridica_path, :class=>"btn btn-success" %>

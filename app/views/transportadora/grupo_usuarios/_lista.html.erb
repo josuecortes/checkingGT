@@ -1,0 +1,19 @@
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			<th>Usuario</th>
+			<th></th>
+
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @grupo.usuario_grupos) do |usuario| %>
+		<td><%= usuario.usuario.nome %></td>
+		<td><%= link_to 'Remover', transportadora_grupo_grupo_usuario_path(@grupo, usuario), method: :delete, :class=>"btn btn-danger btn-small", data: { confirm: 'Você está certo disso?' } %></td>
+
+		<% end %>
+	</tbody>
+</table>
+
+<td><%= link_to 'Adicionar Usuario', new_transportadora_grupo_grupo_usuario_path(@grupo), :class=>"btn btn-success" %></td>

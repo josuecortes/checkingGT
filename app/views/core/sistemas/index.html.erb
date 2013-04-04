@@ -1,0 +1,29 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', core_modulos_path %> | Lista dos Sistemas do Modulo <%= @core_modulo.nome %></h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			<th>Nome</th>
+			<th>Url</th>
+
+			<th></th>
+
+		</tr>
+	</thead>
+	<% @core_sistemas.each do |core_sistema| %>
+	<tbody>
+		<tr>
+			<td><%= core_sistema.nome %></td>
+			<td><%= core_sistema.url %></td>
+
+			<td><%= link_to 'Editar', edit_core_modulo_sistema_path(@core_modulo, core_sistema.id), :class=>"btn btn-primary btn-small" %></td>
+			<td><%= link_to 'Deletar Sistema', core_modulo_sistema_path(@core_modulo, core_sistema.id), :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Deseja Realmente apagar este Sistema?' } %></td>
+
+		</tr>
+	</tbody>
+	<% end %>
+</table>
+
+<%= link_to 'Novo Sistema', new_core_modulo_sistema_path(@core_modulo), :class=>"btn btn-success" %>

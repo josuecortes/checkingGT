@@ -1,0 +1,16 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', aquaviario_embarques_path %> | Documentos do Embarque</h3>
+</div>
+
+<%=
+
+  situacao = @embarque.situacao
+
+  case situacao
+    when "Aberto"
+      render 'lista_aberto'
+    else
+      "Não Disponivel para Consulta."
+  end
+
+%>

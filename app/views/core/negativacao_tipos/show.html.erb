@@ -1,0 +1,25 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', core_negativacao_tipos_path %> | Exibindo Tipo de Negativação Codigo <%= @core_negativacao_tipo.codigo %></h3>
+</div>
+
+
+<p>
+	<strong>Codigo:</strong>
+	<%= @core_negativacao_tipo.codigo %>
+</p>
+
+
+<p>
+	<strong>Descrição:</strong>
+	<%= @core_negativacao_tipo.descricao %>
+</p>
+
+<p>
+	<strong>Criado por:</strong>
+	<%= @core_negativacao_tipo.usuario.nome %>
+	<strong>Em:</strong>
+	<%= @core_negativacao_tipo.created_at.to_s_br %>
+</p>
+
+<%= link_to 'Editar', edit_core_negativacao_tipo_path(@core_negativacao_tipo) %> |
+<%= link_to 'Voltar', core_negativacao_tipos_path %>

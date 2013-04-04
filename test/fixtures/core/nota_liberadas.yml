@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nota_id: 1
+  datahora_liberacao: 2013-02-19 09:35:01
+  fiscal_passe_id: 1
+  valor_principal: 1.5
+  valor_multa: 1.5
+  valor_correcao_monetaria: 1.5
+  valor_juros: 1.5
+  valor_total: 1.5
+  data_entrada: 2013-02-19 09:35:01
+  data_vencimento: 2013-02-19 09:35:01
+  data_pagamento: 2013-02-19 09:35:01
+  data_inclusao: 2013-02-19 09:35:01
+  usuario_id: 1
+
+two:
+  nota_id: 1
+  datahora_liberacao: 2013-02-19 09:35:01
+  fiscal_passe_id: 1
+  valor_principal: 1.5
+  valor_multa: 1.5
+  valor_correcao_monetaria: 1.5
+  valor_juros: 1.5
+  valor_total: 1.5
+  data_entrada: 2013-02-19 09:35:01
+  data_vencimento: 2013-02-19 09:35:01
+  data_pagamento: 2013-02-19 09:35:01
+  data_inclusao: 2013-02-19 09:35:01
+  usuario_id: 1

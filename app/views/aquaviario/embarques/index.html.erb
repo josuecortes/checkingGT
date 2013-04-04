@@ -1,0 +1,128 @@
+<div class="page-header">
+	<h3>Lista de Embarques</h3>
+</div>
+
+<table align="center">
+  <tr>
+    <td>
+      <%= form_tag(@aquaviario_embarques_path, :method => 'get') do %>
+        <%= hidden_field_tag 'situacao', 'Todos' %>
+        <%= submit_tag "Todos", :name => nil, :class=>"btn btn-primary" %>
+      <% end %>
+    </td>
+
+    <td>
+      <%= form_tag(@aquaviario_embarques_path, :method => 'get') do %>
+        <%= hidden_field_tag 'situacao', 'Aberto' %>
+        <%= submit_tag "Abertos (#{@abertos})", :name => nil, :class=>"btn btn-primary" %>
+      <% end %>
+    </td>
+
+    <td>
+      <%= form_tag(@aquaviario_embarques_path, :method => 'get') do %>
+        <%= hidden_field_tag 'situacao', 'Fechado' %>
+        <%= submit_tag "Fechados (#{@fechados})", :name => nil, :class=>"btn btn-primary" %>
+      <% end %>
+    </td>
+
+    <td>
+      <%= form_tag(@aquaviario_embarques_path, :method => 'get') do %>
+        <%= hidden_field_tag 'situacao', 'Processando' %>
+        <%= submit_tag "Processando (#{@processando})", :name => nil, :class=>"btn btn-primary" %>
+      <% end %>
+    </td>
+
+    <td>
+      <%= form_tag(@aquaviario_embarques_path, :method => 'get') do %>
+        <%= hidden_field_tag 'situacao', 'Processado' %>
+        <%= submit_tag "Processados (#{@processados})", :name => nil, :class=>"btn btn-primary" %>
+      <% end %>
+    </td>
+
+    <td>
+      <%= form_tag(@aquaviario_embarques_path, :method => 'get') do %>
+        <%= hidden_field_tag 'situacao', 'Finalizado' %>
+        <%= submit_tag "Finalizados (#{@finalizados})", :name => nil, :class=>"btn btn-primary" %>
+      <% end %>
+    </td>
+
+  </tr>
+</table>
+
+
+
+
+	<%=
+	  #select_tag :situacao, options_for_select(["", "Aberto", "Fechado", "Processado", "Finalizado"]), :class=>"input-large"
+	  #submit_tag "Localizar", :name => nil, :class=>"btn-large btn-primary"
+	%>
+
+
+
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+
+      <th>Situacao</th>
+
+			<th>Balsa</th>
+
+			<th>Porto saida</th>
+
+			<th>Porto destino</th>
+
+			<th>Criado em</th>
+
+			<th>Modificado em</th>
+
+			<th></th>
+
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @aquaviario_embarques) do |aquaviario_embarque| %>
+
+		<td><%= aquaviario_embarque.situacao %></td>
+
+		<td><%= aquaviario_embarque.balsa %></td>
+
+		<td><%= aquaviario_embarque.porto_saida.nome %></td>
+
+		<td><%= aquaviario_embarque.porto_destino.nome %></td>
+
+    	<td><%= aquaviario_embarque.created_at.to_s_br %></td>
+
+    	<td><%= aquaviario_embarque.updated_at.to_s_br %></td>
+
+		<td><%= link_to 'Mostrar', aquaviario_embarque, :class=>"btn btn-small"%>
+		<% if aquaviario_embarque.situacao != "Finalizado" %>
+		  <%= link_to 'Editar', edit_aquaviario_embarque_path(aquaviario_embarque), :class=>"btn btn-primary btn-small" %>
+		<% end %>
+		<% if aquaviario_embarque.situacao == "Aberto" %>
+		  <%= link_to 'Apagar', aquaviario_embarque, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %>
+		  <%= link_to 'Documentos', aquaviario_embarque_documentos_path(aquaviario_embarque), :class=>"btn btn-success btn-small" %>
+		<% end %>
+		<% if aquaviario_embarque.situacao == "Processado" %>
+	    <%= link_to 'Acompanhamento', aquaviario_embarque_acompanhamentos_path(aquaviario_embarque), :class=>"btn btn-success btn-small" %>
+		<% end %>
+		<% if aquaviario_embarque.situacao != "Aberto" %>
+		  <%= link_to 'Manifiesto', aquaviario_embarque_manifesto_path(aquaviario_embarque.id), :class=>"btn btn btn-small" %>
+		<% end %>
+		
+		
+		
+		</td>
+			
+		<% end %>
+	</tbody>
+</table>
+
+<div class="pagination pagination-centered">
+	<%= will_paginate @aquaviario_embarques, :previous_label => '<<', :next_label => '>>' %>
+</div>
+
+<br />
+
+<%= link_to 'Novo Embarque', new_aquaviario_embarque_path, :class=>"btn btn-success" %>

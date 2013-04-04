@@ -1,0 +1,80 @@
+<div class="page-header">
+	<h3>Lista de core_nota_liberadas</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			
+			<th>Nota</th>
+			
+			<th>Datahora liberacao</th>
+			
+			<th>Fiscal passe</th>
+			
+			<th>Valor principal</th>
+			
+			<th>Valor multa</th>
+			
+			<th>Valor correcao monetaria</th>
+			
+			<th>Valor juros</th>
+			
+			<th>Valor total</th>
+			
+			<th>Data entrada</th>
+			
+			<th>Data vencimento</th>
+			
+			<th>Data pagamento</th>
+			
+			<th>Data inclusao</th>
+			
+			<th>Usuario</th>
+			
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @core_nota_liberadas) do |core_nota_liberada| %>
+		
+		<td><%= core_nota_liberada.nota_id %></td>
+		
+		<td><%= core_nota_liberada.datahora_liberacao %></td>
+		
+		<td><%= core_nota_liberada.fiscal_passe_id %></td>
+		
+		<td><%= core_nota_liberada.valor_principal %></td>
+		
+		<td><%= core_nota_liberada.valor_multa %></td>
+		
+		<td><%= core_nota_liberada.valor_correcao_monetaria %></td>
+		
+		<td><%= core_nota_liberada.valor_juros %></td>
+		
+		<td><%= core_nota_liberada.valor_total %></td>
+		
+		<td><%= core_nota_liberada.data_entrada %></td>
+		
+		<td><%= core_nota_liberada.data_vencimento %></td>
+		
+		<td><%= core_nota_liberada.data_pagamento %></td>
+		
+		<td><%= core_nota_liberada.data_inclusao %></td>
+		
+		<td><%= core_nota_liberada.usuario_id %></td>
+		
+		<td><%= link_to 'Mostrar', core_nota_liberada, :class=>"btn btn-small"%></td>
+		<td><%= link_to 'Editar', edit_core_nota_liberada_path(core_nota_liberada), :class=>"btn btn-primary btn-small" %></td>
+		<td><%= link_to 'Apagar', core_nota_liberada, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Novo(a) Nota liberada', new_core_nota_liberada_path, :class=>"btn btn-success" %>
+

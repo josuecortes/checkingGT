@@ -1,0 +1,36 @@
+<div class="page-header">
+	<h3>Listando Usuarios</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			<th>Nome</th>
+			<th>Email</th>
+			<th>Status</th>
+			<th>Mudarsenha</th>
+
+			<th colspan="4"></th>
+
+		</tr>
+	</thead>
+	<% @core_usuarios.each do |core_usuario| %>
+	<tbody>
+		<tr>
+			<td><%= core_usuario.nome %></td>
+			<td><%= core_usuario.email %></td>
+			<td><%= core_usuario.usuario_ativo %></td>
+			<td><%= core_usuario.usuario_mudar_senha %></td>
+
+			<td><%= link_to 'Mostrar', transportadora_usuario_path(core_usuario), :class=>"btn btn-small" %></td>
+			<td><%= link_to 'Editar', edit_transportadora_usuario_path(core_usuario), :class=>"btn btn-primary btn-small" %></td>
+			<td><%= link_to 'Mudar Status', transportadora_usuario_path(core_usuario), :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Deseja Realmente mudar o Status deste Usuario?' } %></td>
+			<td><%= link_to 'Resetar a Senha', transportadora_usuario_resetasenha_path(core_usuario), :class=>"btn btn-danger btn-small", data: { confirm: 'Deseja Realmente Resetar a Senha deste Usuario ?' } %></td>
+		</tr>
+	</tbody>
+	<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo Usuario', new_transportadora_usuario_path, :class=>"btn btn-success" %>

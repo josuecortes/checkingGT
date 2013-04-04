@@ -1,0 +1,80 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', core_transportadoras_path %> | Exibindo Transportadora <%= @core_transportadora.nomefantasia %></h3>
+</div>
+
+
+<p>
+	<strong>Cnpj:</strong>
+	<%= @core_transportadora.cnpj %>
+</p>
+
+
+<p>
+	<strong>Inscricaoestadual:</strong>
+	<%= @core_transportadora.inscricaoestadual %>
+</p>
+
+
+<p>
+	<strong>Nomefantasia:</strong>
+	<%= @core_transportadora.nomefantasia %>
+</p>
+
+
+<p>
+	<strong>Razaosocial:</strong>
+	<%= @core_transportadora.razaosocial %>
+</p>
+
+
+<p>
+	<strong>Endereco:</strong>
+	<%= @core_transportadora.endereco %>
+</p>
+
+
+<p>
+	<strong>Estado:</strong>
+	<%= @core_transportadora.estado %>
+</p>
+
+
+<p>
+	<strong>Cidade:</strong>
+	<%= @core_transportadora.cidade %>
+</p>
+
+
+<p>
+	<strong>Bairro:</strong>
+	<%= @core_transportadora.bairro %>
+</p>
+
+
+<p>
+	<strong>Cep:</strong>
+	<%= @core_transportadora.cep %>
+</p>
+
+
+<p>
+	<strong>Email:</strong>
+	<%= @core_transportadora.email %>
+</p>
+
+
+<p>
+	<strong>Telefone:</strong>
+	<%= @core_transportadora.telefone %>
+</p>
+
+
+<p>
+	<strong>Fax:</strong>
+	<%= @core_transportadora.fax %>
+</p>
+
+
+
+<%= link_to 'Editar', edit_core_transportadora_path(@core_transportadora) %> |
+<%= link_to 'Voltar', core_transportadoras_path %>

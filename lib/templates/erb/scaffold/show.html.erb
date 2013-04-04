@@ -1,0 +1,15 @@
+<div class="page-header">
+	<h3>Exibindo <%= singular_table_name %></h3>
+</div>
+
+<% attributes.each do |attribute| -%>
+<p>
+	<strong><%= attribute.human_name %>:</strong>
+	<%%= @<%= singular_table_name %>.<%= attribute.name %> %>
+</p>
+
+<% end -%>
+
+<%%= link_to 'Editar', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>) %> |
+<%%= link_to 'Voltar', <%= index_helper %>_path %>
+

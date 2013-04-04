@@ -1,0 +1,80 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', aquaviario_portos_path %> | Exibindo Porto <%= @aquaviario_porto.nome %></h3>
+</div>
+
+
+<p>
+	<strong>Nome:</strong>
+	<%= @aquaviario_porto.nome %>
+</p>
+
+
+<p>
+	<strong>Calado:</strong>
+	<%= @aquaviario_porto.calado %>
+</p>
+
+
+<p>
+	<strong>Capacidade:</strong>
+	<%= @aquaviario_porto.capacidade %>
+</p>
+
+
+<p>
+	<strong>Endereço:</strong>
+	<%= @aquaviario_porto.endereco %>
+</p>
+
+
+<p>
+	<strong>Bairro:</strong>
+	<%= @aquaviario_porto.bairro %>
+</p>
+
+
+<p>
+	<strong>Cidade:</strong>
+	<%= @aquaviario_porto.cidade %>
+</p>
+
+
+<p>
+	<strong>Estado:</strong>
+	<%= @aquaviario_porto.estado %>
+</p>
+
+
+<p>
+	<strong>Cep:</strong>
+	<%= @aquaviario_porto.cep %>
+</p>
+
+
+<p>
+	<strong>Telefone:</strong>
+	<%= @aquaviario_porto.telefone %>
+</p>
+
+
+<p>
+	<strong>Fax:</strong>
+	<%= @aquaviario_porto.fax %>
+</p>
+
+
+<p>
+	<strong>E-mail:</strong>
+	<%= @aquaviario_porto.email %>
+</p>
+
+
+<p>
+	<strong>Transportadora:</strong>
+	<%= @aquaviario_porto.transportadora.razaosocial %>
+</p>
+
+
+
+<%= link_to 'Editar', edit_aquaviario_porto_path(@aquaviario_porto) %> |
+<%= link_to 'Voltar', aquaviario_portos_path %>

@@ -1,0 +1,87 @@
+<div class="page-header">
+	<h3>Exibindo core_nota_liberada</h3>
+</div>
+
+
+<p>
+	<strong>Nota:</strong>
+	<%= @core_nota_liberada.nota_id %>
+</p>
+
+
+<p>
+	<strong>Datahora liberacao:</strong>
+	<%= @core_nota_liberada.datahora_liberacao %>
+</p>
+
+
+<p>
+	<strong>Fiscal passe:</strong>
+	<%= @core_nota_liberada.fiscal_passe_id %>
+</p>
+
+
+<p>
+	<strong>Valor principal:</strong>
+	<%= @core_nota_liberada.valor_principal %>
+</p>
+
+
+<p>
+	<strong>Valor multa:</strong>
+	<%= @core_nota_liberada.valor_multa %>
+</p>
+
+
+<p>
+	<strong>Valor correcao monetaria:</strong>
+	<%= @core_nota_liberada.valor_correcao_monetaria %>
+</p>
+
+
+<p>
+	<strong>Valor juros:</strong>
+	<%= @core_nota_liberada.valor_juros %>
+</p>
+
+
+<p>
+	<strong>Valor total:</strong>
+	<%= @core_nota_liberada.valor_total %>
+</p>
+
+
+<p>
+	<strong>Data entrada:</strong>
+	<%= @core_nota_liberada.data_entrada %>
+</p>
+
+
+<p>
+	<strong>Data vencimento:</strong>
+	<%= @core_nota_liberada.data_vencimento %>
+</p>
+
+
+<p>
+	<strong>Data pagamento:</strong>
+	<%= @core_nota_liberada.data_pagamento %>
+</p>
+
+
+<p>
+	<strong>Data inclusao:</strong>
+	<%= @core_nota_liberada.data_inclusao %>
+</p>
+
+
+<p>
+	<strong>Usuario:</strong>
+	<%= @core_nota_liberada.usuario_id %>
+</p>
+
+
+
+<%= link_to 'Editar', edit_core_nota_liberada_path(@core_nota_liberada) %> |
+<%= link_to 'Voltar', core_nota_liberadas_path %>
+

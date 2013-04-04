@@ -1,0 +1,21 @@
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			<th>Sistema</th>
+			<th>Modulo</th>
+			<th></th>
+
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @grupo.grupo_sistemas) do |sistema| %>
+		<td><%= sistema.sistema.nome %></td>
+		<td><%= sistema.sistema.modulo.nome %></td>
+		<td><%= link_to 'Remover', core_grupo_grupo_sistema_path(@grupo, sistema), method: :delete, :class=>"btn btn-danger btn-small", data: { confirm: 'Você está certo disso?' } %></td>
+
+		<% end %>
+	</tbody>
+</table>
+
+<td><%= link_to 'Adicionar Sistema', new_core_grupo_grupo_sistema_path(@grupo), :class=>"btn btn-success" %></td>

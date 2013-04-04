@@ -1,0 +1,34 @@
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			
+			<th>Codigo</th>
+			
+			<th>Descricao</th>
+			
+			<th>Adicionado por</th>
+			
+			<th>Adicionado em</th>
+			
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @pessoa.npf) do |negativacao| %>
+		
+		<td><%= negativacao.negativacao_tipo.codigo %></td>
+		
+		<td><%= negativacao.negativacao_tipo.descricao %></td>
+		
+		<td><%= negativacao.usuario.nome %></td>
+		
+		<td><%= negativacao.created_at.to_s_br %></td>
+		
+		<td><%= link_to 'Apagar', core_npf_path(negativacao), :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		
+		<% end %>
+	</tbody>
+</table>
+
+

@@ -1,0 +1,56 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', core_pessoa_fisicas_path %> | Exibindo Pessoa Fisica <%= @core_pessoa_fisica.nome %></h3>
+</div>
+
+
+<p>
+	<strong>Nome:</strong>
+	<%= @core_pessoa_fisica.nome %>
+</p>
+
+
+<p>
+	<strong>Cpf:</strong>
+	<%= @core_pessoa_fisica.cpf %>
+</p>
+
+
+<p>
+	<strong>Endereco:</strong>
+	<%= @core_pessoa_fisica.endereco %>
+</p>
+
+
+<p>
+	<strong>Bairro:</strong>
+	<%= @core_pessoa_fisica.bairro %>
+</p>
+
+
+<p>
+	<strong>Cidade:</strong>
+	<%= @core_pessoa_fisica.cidade %>
+</p>
+
+
+<p>
+	<strong>Estado:</strong>
+	<%= @core_pessoa_fisica.estado %>
+</p>
+
+
+<p>
+	<strong>Observacoes:</strong>
+	<%= @core_pessoa_fisica.observacoes %>
+</p>
+
+
+<p>
+	<strong>Criado por:</strong>
+	<%= @core_pessoa_fisica.usuario.nome %>
+	<strong>Em:</strong>
+	<%= @core_pessoa_fisica.created_at.to_s_br %>
+</p>
+
+<%= link_to 'Editar', edit_core_pessoa_fisica_path(@core_pessoa_fisica) %> |
+<%= link_to 'Voltar', core_pessoa_fisicas_path %>

@@ -1,0 +1,141 @@
+<%
+
+  temdocumento = false
+
+  if @embarque.situacao != "Aberto"
+
+    @embarque.documentos.each do |documento|
+      if documento.transportadora_destino_id == @usuario_logado.transportadora_id and documento.embarque.transportadora_id != @usuario_logado.transportadora_id
+
+        temdocumento = true
+
+      end
+    end
+
+  end
+
+%>
+
+<% if temdocumento == true %>
+
+<!--<table width='100%' border='1px solid' bordercolor='000000' style='border-collapse: collapse' cellpadding='3px'>-->
+
+<div class="ocultos" align="center">
+	<fieldset>	
+		Configure a Orientação da Pagina para Paisagem.
+		<br><br>
+		<%= link_to 'Voltar', :back, :class=>"btn btn btn-small" %>
+		<input type="button" onClick="window.print()" value="Imprimir Manifesto"/>
+	</fieldset>
+	<br>
+</div>
+
+<table width='100%' class="bordasimples">
+  <tr>
+    <td rowspan="2" align="center" valign="middle"><%= image_tag('logo_sre.png') %></td>
+    <td height="45" colspan="3" align="center" valign="middle"><strong>SECRETARIA DA RECEITA ESTADUAL</strong></td>
+    <td height="45" align="left" valign="middle"><strong>Numero: </strong><%= @embarque.id %></td>
+    <td rowspan="2" align="center" valign="middle"><%= @embarque.barcode_data.html_safe %></td>
+  </tr>
+  <tr>
+    <td height="45" colspan="3" align="center" valign="middle"><strong>MANIFESTO DE CARGA AQUAVIARIO</strong></td>
+    <td height="45" align="left" valign="middle"><strong>Data Emissao: </strong><%= DateTime.now.to_s_br %></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center" valign="middle" bgcolor="#CCCCCC"><strong>DADOS DO TRANSPORTADOR AQUAVIARIO</strong></td>
+  </tr>
+  <tr>
+    <td align="left" valign="middle"><strong>Ins. Estadual</strong></td>
+    <td align="left" valign="middle"><%= @embarque.transportadora.inscricaoestadual %></td>
+    <td align="left" valign="middle"><strong>Razao Social</strong></td>
+    <td colspan="3" align="left" valign="middle"><%= @embarque.transportadora.razaosocial %></td>
+  </tr>
+  <tr>
+    <td align="left" valign="middle"><strong>CNPJ</strong></td>
+    <td align="left" valign="middle"><%= @embarque.transportadora.cnpj %></td>
+    <td align="left" valign="middle"><strong>Endereco</strong></td>
+    <td colspan="3" align="left" valign="middle"><%= @embarque.transportadora.endereco %>, <%= @embarque.transportadora.bairro %>, <%= @embarque.transportadora.cidade %>, <%= @embarque.transportadora.estado %></td>
+  </tr>
+  <tr>
+    <td align="left" valign="middle"><strong>Balsa</strong></td>
+    <td align="left" valign="middle"><%= @embarque.balsa %></td>
+    <td align="left" valign="middle"><strong>Data Saida</strong></td>
+    <td align="left" valign="middle"><%= @embarque.data_saida.to_s_br %></td>
+    
+    <% if @embarque.situacao != 'Finalizado' %>	
+    	<td align='left' valign='middle'><strong>Previsao Chegada</strong></td>
+    	<td align='left' valign='middle'><%= @embarque.data_previsao.to_s_br %></td>
+  	<% else %>
+  		<td align='left' valign='middle'><strong>Data Chegada</strong></td>
+    	<td align='left' valign='middle'><%= @embarque.data_chegou.to_s_br %></td>
+  	<% end %>
+    
+  </tr>
+  <tr>
+    <td align="left" valign="middle"><strong>Origem</strong></td>
+    <td align="left" valign="middle"><%= @embarque.porto_saida.nome %></td>
+    <td align="left" valign="middle"><strong>Destino</strong></td>
+    <td colspan="3" align="left" valign="middle"><%= @embarque.porto_destino.nome %></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center" valign="middle" bgcolor="#CCCCCC"><strong>DADOS DA CARGA</strong></td>
+  </tr>
+  <tr>
+    <td align="center" valign="middle"><strong>Doc. Eletronico</strong></td>
+    <td align="center" valign="middle"><strong>Transportador Rodoviario Destinatario</strong></td>
+    <td align="center" valign="middle"><strong>Tipo Carga</strong></td>
+    <td align="center" valign="middle"><strong>Placa Carga</strong></td>
+    <td align="center" valign="middle"><strong>Peso</strong></td>
+    <td align="center" valign="middle"><strong>Valor</strong></td>
+  </tr>
+  
+	<% @embarque.documentos.each do |documento| %>
+		<% if documento.transportadora_destino_id == @usuario_logado.transportadora_id %>  
+			  <tr>
+			    <td align='left' valign='middle'><%= documento.documento %></td>
+			    <td align='left' valign='middle'><%= documento.transportadora_destino.razaosocial %></td>
+			    <td align='left' valign='middle'><%= documento.unidade_carga.tipo %></td>
+			    <td align='left' valign='middle'><%= documento.placa_unidade %></td>
+			    <td align='left' valign='middle'><%= documento.peso %></td>
+			    <% if documento.valor != nil %>
+			    	<td align='left' valign='middle'><%= documento.valor.real_contabil %></td>
+			    <% else %>
+			    	<td align='left' valign='middle'></td>
+			    <% end %>	
+			  </tr>
+		<% end %>
+	<% end %>	  
+  
+  <tr>
+    <td colspan="6" align="center" valign="middle" bgcolor="#CCCCCC"><strong>RESUMO</strong></td>
+  </tr>
+  <tr>
+  	
+    <% numero = @embarque.documentos.count(:conditions=>"TRANSPORTADORA_DESTINO_ID = #{@usuario_logado.transportadora_id}") %>
+    <td colspan="2" align="left" valign="middle"><strong>Numero de Documentos: </strong><%= numero %></td>
+    
+    <% peso = @embarque.documentos.sum(:peso, :conditions=>"TRANSPORTADORA_DESTINO_ID = #{@usuario_logado.transportadora_id}") %>
+    <td colspan="2" align="left" valign="middle"><strong>Peso Total: </strong><%= peso %> (kg)</td>
+    <% valor = @embarque.documentos.sum(:valor, :conditions=>"TRANSPORTADORA_DESTINO_ID = #{@usuario_logado.transportadora_id}") %>
+    <% if valor > 0 and valor != nil %>
+    	<td colspan="2" align="left" valign="middle"><strong>Valor Total: </strong><%= valor.real_contabil %></td>
+    <% else %>
+    	<td colspan="2" align="left" valign="middle"><strong>Valor Total: </strong>R$ <%= valor %></td>
+    <% end %>
+    
+  </tr>
+</table>
+
+<br>
+<div align="right"><strong>* Obs: </strong>Dados da Carga e Resumo do Transportador: <strong><%= @usuario_logado.transportadora.razaosocial %></strong></div>
+
+<% else %>
+<div class="ocultos" align="center">
+	<fieldset>	
+		Voce nao possui documentos neste embarque.
+		<br><br>
+		<%= link_to 'Voltar', :back, :class=>"btn btn btn-small" %>
+	</fieldset>
+	<br>
+</div>
+<% end %>

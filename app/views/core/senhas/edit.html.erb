@@ -1,0 +1,53 @@
+<div class="page-header">
+	<h3>Alterar Senha de <%= @core_senha.usuario.nome %></h3>
+</div>
+<!--formulario enviando a partir do usuarios (@core_senha.usuario) -->
+<%= form_for(@core_senha, :url=>core_usuario_senha_path(@core_senha.usuario, @core_senha), :html=>{:class=>"form-horizontal well"}) do |f| %>
+  <% if @core_senha.errors.any? %>
+    <div class="alert alert-error">
+      <strong><%= pluralize(@core_senha.errors.count, "erro") %> ao tentar salvar este formulario:</strong>
+
+      <ul>
+      <% @core_senha.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+		<%= f.label "Senha Atual", :class=>"control-label" %>
+		<div class="controls">
+			<%= f.password_field :senha_atual, :class=>"input-large", :required=>true %>
+			<p class="help-block">
+
+			</p>
+		</div>
+  </div>
+  <div class="control-group">
+		<%= f.label "Nova Senha", :class=>"control-label" %>
+		<div class="controls">
+			<%= f.password_field :senha, :class=>"input-large", :required=>true %>
+			<p class="help-block">
+
+			</p>
+		</div>
+  </div>
+  <div class="control-group">
+		<%= f.label "Confirme a Nova Senha", :class=>"control-label" %>
+		<div class="controls">
+			<%= f.password_field :senha_confirmation, :class=>"input-large", :required=>true %>
+			<p class="help-block">
+
+			</p>
+		</div>
+  </div>
+
+  <div class="form-actions">
+		<%= f.submit "Alterar", :class=>"btn btn-primary" %>
+		<button type="reset" class="btn">
+			Cancelar
+		</button>
+  </div>
+
+<% end %>

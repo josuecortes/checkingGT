@@ -1,0 +1,90 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', aquaviario_embarques_path %> | Exibindo aquaviario_embarque</h3>
+</div>
+
+
+<p>
+	<strong>Balsa:</strong>
+	<%= @aquaviario_embarque.balsa %>
+</p>
+
+
+<p>
+	<strong>Situacao:</strong>
+	<%= @aquaviario_embarque.situacao %>
+</p>
+
+
+<p>
+	<strong>Data saida:</strong>
+	<%= @aquaviario_embarque.data_saida.to_s_br %>
+</p>
+
+
+<p>
+	<strong>Data previsao:</strong>
+	<%= @aquaviario_embarque.data_previsao.to_s_br %>
+</p>
+
+
+<p>
+	<strong>Porto saida:</strong>
+	<%= @aquaviario_embarque.porto_saida.nome %>
+</p>
+
+
+<p>
+	<strong>Porto destino:</strong>
+	<%= @aquaviario_embarque.porto_destino.nome %>
+</p>
+
+
+<p>
+	<strong>Adicionado Por:</strong>
+	<%= @aquaviario_embarque.usuario.nome %>
+	<strong>Em:</strong>
+	<%= @aquaviario_embarque.created_at.to_s_br %>
+</p>
+
+<% if @aquaviario_embarque.usuario_fechou != nil and @aquaviario_embarque.data_fechou != nil %>
+<p>
+	<strong>Fechado Por:</strong>
+	<%= @aquaviario_embarque.usuario_fechou.nome %>
+	<strong>Em:</strong>
+	<%= @aquaviario_embarque.data_fechou.to_s_br %>
+</p>
+<% end %>
+
+<% if @aquaviario_embarque.usuario_chegou != nil and @aquaviario_embarque.data_chegou != nil %>
+<p>
+	<strong>Informou Chegada/Finalizado Por:</strong>
+	<%= @aquaviario_embarque.usuario_chegou.nome %>
+	<strong>Em:</strong>
+	<%= @aquaviario_embarque.data_chegou.to_s_br %>
+</p>
+<% end %>
+
+<h3>Documentos</h3>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+			<th>Tipo</th>
+			<th>Documento</th>
+			<th>Adicionado em</th>
+			<th>Transportadora Responsavel</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @aquaviario_embarque.documentos.each do |documento| %>
+			<tr>
+				<td><%= documento.tipo %></td>
+				<td><%= documento.documento %></td>
+				<td><%= documento.created_at.to_s_br %></td>
+				<td><%= documento.transportadora_destino.nomefantasia %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+

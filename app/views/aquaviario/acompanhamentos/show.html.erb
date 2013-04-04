@@ -1,0 +1,99 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', aquaviario_embarque_acompanhamentos_path(@notas[0].embarque_id) %> | Acompanhamento de Nota</h3>
+</div>
+
+<% if @notas[0].embarque.situacao == "Processado" %>
+	
+	<table class="table table-bordered">
+		
+			<tr>
+				<th>Codigo</th>
+				<td><%= @notas[0].codigo %></td>
+				<th>Numero</th>
+				<td><%= @notas[0].numero_nota %></td>
+			</tr>
+		
+	</table>
+		
+	<% if @notas[0].nota_retidas.count > 0 %>
+	
+		<% if @notas[0].nota_retidas.count > 1 %>
+			<h3><%= @notas[0].nota_retidas.count %> Pendencias encontradas</h3>
+		<% else %>
+			<h3><%= @notas[0].nota_retidas.count %> Pendencia encontrada</h3>
+		<% end %>
+		
+		<% @notas[0].nota_retidas.each do |nota| %>
+		
+			<table class="table table-bordered">
+			
+				<tr>
+					<th width="20%">Regra de Fiscalização</th>
+					<td><%= nota.fiscalizacao_regra.descricao %></td>
+				</tr>
+				<tr>
+					<th>Legislação</th>
+					<td><%= nota.fiscalizacao_regra.legislacao %></td>
+				</tr>
+				<tr>
+					<th>Canal de Fiscalização</th>
+					<td><%= nota.fiscalizacao_regra.fiscalizacao_canal.descricao %></td>
+				</tr>
+				<tr>
+					<th>Tipo de Negativacão</th>
+					<td><%= nota.fiscalizacao_regra.negativacao_tipo.descricao %></td>
+				</tr>
+				<tr>
+					<th>Orientação</th>
+					<td><%= nota.fiscalizacao_regra.orientacao %></td>
+				</tr>
+			
+			</table>
+			
+			<table class="table table-bordered">
+				
+				<tr>
+					<th>Valor Principal</th>
+					<th>Valor Multa</th>
+					<th>Valor Correção Monetaria:</th>
+					<th>Valor Juros</th>
+					<th>Valor Total</th>
+				</tr>
+				<tr>
+					<td><%= nota.valor_principal.real_contabil %></td>
+					<td><%= nota.valor_multa.real_contabil %></td>
+					<td><%= nota.valor_correcao_monetaria.real_contabil %></td>
+					<td><%= nota.valor_juros.real_contabil %></td>
+					<td><%= nota.valor_total.real_contabil %></td>
+				</tr>
+					
+			</table>
+			
+			<table class="table table-bordered">
+					
+				<tr>
+					<th>Data da Entrada</th>
+					<th>Data do Vencimento</th>
+					<th>Fiscalizada em</th>
+				</tr>
+				<tr>
+					<td><%= nota.data_entrada.to_s_br %></td>
+					<td><%= nota.data_vencimento.to_s_br %></td>
+					<td><%= nota.datahora_fiscalizacao.to_s_br %></td>
+				</tr>
+					
+			</table>
+			
+			<h3><hr /></h3>
+		
+		<% end %>
+	
+	<% else %>
+		
+		<h3>Nenhuma Pendencia Encontrada</h3>	
+		
+	<% end %>
+	
+<% else %>
+	Não Disponivel para Consulta
+<% end %>

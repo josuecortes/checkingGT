@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  grupo_id: 1
+  sistema_id: 1
+
+two:
+  grupo_id: 1
+  sistema_id: 1

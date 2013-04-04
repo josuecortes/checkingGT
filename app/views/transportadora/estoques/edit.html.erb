@@ -1,0 +1,49 @@
+<div class="ocultos" align="center">
+	<fieldset>	
+		<font color="red">*ATENCAO*<BR>Configure a Orientação da Pagina para Retrato.</font>
+		<br>
+		<% if flash[:success] %>
+			<%= flash[:success] %>
+		<% end %>
+		<br>
+		<%= link_to 'Voltar', :back, :class=>"btn btn btn-small" %> &nbsp;&nbsp;
+		<input type="button" onClick="window.print()" value="Imprimir Passe Fiscal"/>
+		
+	</fieldset>
+	<br>
+</div>	
+
+<center>
+	
+<table width="640" class="bordasimples">
+  <tr>
+    <td rowspan="6" align="center" valign="middle"><%= image_tag('logo_sre.png') %></td>
+    <td colspan="4" align="center" valign="middle">
+      <p><strong>SECRETARIA DA RECEITA ESTADUAL</strong></p>
+    <p><strong>PASSE FISCAL ELETRONICO - DOCUMENTO AUXILIAR</strong></p></td>
+    <td rowspan="6" align="center" valign="middle">&nbsp;<%= @nota.fiscal_passe.barcode_data(xdim:1, height:40).html_safe %><br><strong>Data Emissao</strong><br><%= DateTime.now.to_s_br %></td>
+  </tr>
+  <tr>
+    <td align="left" valign="middle"><strong>Emissor</strong></td>
+    <td colspan="3" align="left" valign="middle"><%= @nota.fiscal_passe.emissor %></td>
+  </tr>
+  <tr>
+    <td rowspan="2" align="left" valign="middle"><strong>Destinatario</strong></td>
+    <td colspan="3" align="left" valign="middle"><%= @nota.fiscal_passe.destinatario %></td>
+  </tr>
+  <tr>
+    <td colspan="3"><strong>Endereco: </strong><%= @nota.fiscal_passe.endereco %></td>
+  </tr>
+  <tr>
+    <td align="left" valign="middle"><strong>Nota</strong></td>
+    <td align="left" valign="middle"><%= @nota.fiscal_passe.numero_nota %></td>
+    <td align="left" valign="middle"><strong>Data Emissao Nota</strong></td>
+    <td align="left" valign="middle"><%= @nota.fiscal_passe.datahora_emissao.to_s_br %></td>
+  </tr>
+  <tr>
+    <td align="left" valign="middle"><strong>DANFE</strong></td>
+    <td colspan="3" align="left" valign="middle"><%= @nota.fiscal_passe.danfe %></td>
+  </tr>
+</table>
+
+</center>

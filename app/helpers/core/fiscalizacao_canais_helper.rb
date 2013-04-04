@@ -1,0 +1,2 @@
+module Core::FiscalizacaoCanaisHelper
+end

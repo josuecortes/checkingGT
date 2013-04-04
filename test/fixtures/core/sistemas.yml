@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nome: MyString
+  sigla: MyString
+  apelido: MyString
+  url: MyString
+  controlador: MyString
+  icone: MyString
+  status: false
+  modulo_id: 1
+
+two:
+  nome: MyString
+  sigla: MyString
+  apelido: MyString
+  url: MyString
+  controlador: MyString
+  icone: MyString
+  status: false
+  modulo_id: 1

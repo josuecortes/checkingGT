@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="span12">
+
+		<%= form_for(@negativacao, :url=> core_npfs_path, :html=>{:class=>"form-inline well"}) do |f| %>
+		<% if @negativacao.errors.any? %>
+		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong><%= pluralize(@negativacao.errors.count, "erro") %> ao tentar salvar este formulario:</strong>
+			
+			<ul>
+				<% @negativacao.errors.full_messages.each do |msg| %>
+				<li>
+					<%= msg %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+				
+		<%= f.hidden_field :pessoa_fisica_id, :value=>@pessoa.id %>
+		<%= f.hidden_field :usuario_id, :value=>@usuario_logado.id %>		
+
+		<%= f.collection_select(:negativacao_tipo_id,
+				Core::NegativacaoTipo.order('descricao'),
+				:id, :descricao, {:prompt => true}, :required=>true) %>
+		<%= f.submit "Adicionar Negativacao", :class=>"btn btn-primary" %>
+		<% end %>
+	</div>
+</div>

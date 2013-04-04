@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="utf-8">
+		<title> CheckinGT </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="A calm, blue sky.">
+		<meta name="author" content="Thomas Park">
+
+		<%= stylesheet_link_tag "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+
+	</head>
+
+	<body class="preview" data-spy="scroll" data-target=".subnav" data-offset="80">
+
+		<!-- Navbar
+		================================================== -->
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+					<a class="brand" href="/intranet">ChekinGT</a>
+					<div class="nav-collapse" id="main-menu">
+
+						<% if @usuario_logado %>
+
+						    <ul class="nav" id="main-menu-left">
+
+							    <% @usuario_logado.modulos.uniq.each do |m| %>
+
+							            <li class="dropdown">
+								            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= m.nome %> <b class="caret"></b></a>
+								            <ul class="dropdown-menu" id="swatch-menu">
+									            <% @usuario_logado.sistemas.each do |s| %>
+									            <% if s.modulo_id == m.id and s.url != nil%>
+									            <li>
+										            <%= link_to s.nome, :controller=>s.url, :action=>:index %>
+									            </li>
+									            <% end %>
+									            <% end %>
+								            </ul>
+							            </li>
+
+							    <% end %>
+
+						    </ul>
+
+						    <ul class="nav pull-right" id="main-menu-right">
+
+								<div class="btn-group">
+							    	<a class="btn btn-inverse" href="#"><i class="icon-user icon-white"></i> <%= @usuario_logado.nome %></a>
+							    	<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+							    	<ul class="dropdown-menu dropdown-inverse">
+							    		<li>
+											<%= link_to ' Perfil', core_perfil_path(@usuario_logado.id) %>
+										</li>
+							    		<li>
+								    		<%= link_to 'Alterar Senha', edit_core_usuario_senha_path(@usuario_logado, @usuario_logado.senha.id) %>
+										</li>
+										<% if @usuario_logado.transportadora_id != nil %>
+											<li class="divider"></li>
+											<%= @usuario_logado.transportadora.razaosocial %>
+										<% end %>	
+							    		<li class="divider"></li>
+							    		<li>
+								    		<%= link_to 'Sair', core_login_path(@usuario_logado), method: :delete, data: { confirm: 'Deseja Realmente Sair do Sistema?' } %>
+										</li>
+							    	</ul>
+							    </div>
+
+							</ul>
+
+						<% end %>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+
+
+				<% if flash[:notice] %>
+				<div class="alert alert-info">
+					<button type="button" class="close" data-dismiss="alert">
+						&times;
+					</button>
+					<%= flash[:notice] %>
+				</div>
+				<% end %>
+				<% if flash[:success] %>
+				<div class="alert alert-success">
+					<button type="button" class="close" data-dismiss="alert">
+						&times;
+					</button>
+					<%= flash[:success] %>
+				</div>
+				<% end %>
+				<% if flash[:error] %>
+				<div class="alert alert-error">
+					<button type="button" class="close" data-dismiss="alert">
+						&times;
+					</button>
+					<%= flash[:error] %>
+				</div>
+				<% end %>
+
+				<%= yield %>
+
+			</div><!-- /container -->
+	<br><br><br><br><br><br>
+
+	<div class="navbar navbar-inverse navbar-fixed-bottom">
+		<div class="navbar-inner">
+			<div class="container offset5">
+				<a class="brand" href="#">Secretaria da Receita Estadual 2013</a>
+			</div>
+		</div>
+	</div>
+
+	</body>
+</html>

@@ -1,0 +1,57 @@
+<div class="row">
+
+	<%= form_for(@core_modulo, :html=>{:class=>"form-horizontal well"}) do |f| %>
+	<% if @core_modulo.errors.any? %>
+	<div class="alert alert-error">
+		<strong><%= pluralize(@core_modulo.errors.count, "erro") %> ao tentar salvar este formulario:</strong>
+
+		<ul>
+			<% @core_modulo.errors.full_messages.each do |msg| %>
+			<li>
+				<%= msg %>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+
+	<div class="control-group">
+		<%= f.label :nome, :class=>"control-label" %>
+		<div class="controls">
+			<%= f.text_field :nome, :class=>"input-xxlarge" %>
+			<p class="help-block">
+
+			</p>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<%= f.label :sigla, :class=>"control-label" %>
+		<div class="controls">
+			<%= f.text_field :sigla, :class=>"input-small" %>
+			<p class="help-block">
+
+			</p>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<%= f.label :status, :class=>"control-label" %>
+		<div class="controls">
+			<%= f.check_box :status, :class=>"input-small" %>
+			<p class="help-block">
+
+			</p>
+		</div>
+	</div>
+
+	<div class="form-actions">
+		<%= f.submit "Salvar", :class=>"btn btn-primary" %>
+		<button type="reset" class="btn">
+			Cancelar
+		</button>
+	</div>
+
+	<% end %>
+
+</div>

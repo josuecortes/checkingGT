@@ -1,0 +1,2 @@
+module Core::NpfsHelper
+end

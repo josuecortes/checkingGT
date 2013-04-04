@@ -1,0 +1,47 @@
+<div class="page-header">
+	<h3>Lista de Pessoa Fisica</h3>
+</div>
+
+<%= form_for(@core_pessoa_fisica, method: :get, :url=>core_pessoa_fisicas_path, :html=>{:class=>"form-inline"}) do |f| %>
+    <%= f.text_field :nome, :class=>"input-large", :placeholder=>"Nome" %>
+    <%= f.text_field :cpf, :class=>"input-large", :placeholder=>"CPF" %>
+    <button type="submit" class="btn">Localizar</button>
+<% end %>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+
+			<th>Nome</th>
+
+			<th>Cpf</th>
+
+			<th></th>
+
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @core_pessoa_fisicas) do |core_pessoa_fisica| %>
+
+		<td><%= core_pessoa_fisica.nome %></td>
+
+		<td><%= core_pessoa_fisica.cpf %></td>
+
+		<td><%= link_to 'Mostrar', core_pessoa_fisica, :class=>"btn btn-small"%></td>
+		<td><%= link_to 'Editar', edit_core_pessoa_fisica_path(core_pessoa_fisica), :class=>"btn btn-primary btn-small" %></td>
+		<td><%= link_to 'Apagar', core_pessoa_fisica, :class=>"btn btn-danger btn-small", method: :delete, data: { confirm: 'Você está certo disso?' } %></td>
+		
+		<% end %>
+	</tbody>
+</table>
+
+<div class="pagination pagination-centered">
+	<%= will_paginate @core_pessoa_fisicas, :previous_label => '<<', :next_label => '>>' %>
+</div>
+	
+    
+
+<br />
+
+<%= link_to 'Nova Pessoa Fisica', new_core_pessoa_fisica_path, :class=>"btn btn-success" %>

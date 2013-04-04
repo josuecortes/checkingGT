@@ -1,0 +1,55 @@
+<div class="page-header">
+	<h3>Lista de Embarques que Contem Documentos sob sua Responsabilidade</h3>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+	<thead>
+		<tr>
+
+      <th>Situacao</th>
+
+			<th>Balsa</th>
+
+			<th>Porto saida</th>
+
+			<th>Porto destino</th>
+
+			<th>Criado em</th>
+
+			<th>Modificado em</th>
+
+			<th></th>
+
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= content_tag_for(:tr, @transportadora_embarques) do |transportadora_embarque| %>
+
+		<td><%= transportadora_embarque.situacao %></td>
+
+		<td><%= transportadora_embarque.balsa %></td>
+
+		<td><%= transportadora_embarque.porto_saida.nome %></td>
+
+		<td><%= transportadora_embarque.porto_destino.nome %></td>
+
+    	<td><%= transportadora_embarque.created_at.to_s_br %></td>
+
+    	<td><%= transportadora_embarque.updated_at.to_s_br %></td>
+		
+		<td><%= link_to 'Manifesto', transportadora_embarque_path(transportadora_embarque), :class=>"btn btn-small"%></td>
+		
+		<% if transportadora_embarque.situacao == "Processado" %>
+	    <td><%= link_to 'Acompanhamento', transportadora_embarque_acompanhamentos_path(transportadora_embarque), :class=>"btn btn-success btn-small" %></td>
+		<% end %>
+
+		<% end %>
+	</tbody>
+</table>
+
+<div class="pagination pagination-centered">
+	<%= will_paginate @transportadora_embarques, :previous_label => '<<', :next_label => '>>' %>
+</div>
+
+<br />

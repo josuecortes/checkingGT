@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  codigo: MyString
+  descricao: MyString
+  legislacao: MyText
+  orientacao: MyText
+  fiscalizacao_canal_id: 1
+  negativacao_tipo_id: 1
+  usuario_id: 1
+  usuario_alterou_id: 1
+
+two:
+  codigo: MyString
+  descricao: MyString
+  legislacao: MyText
+  orientacao: MyText
+  fiscalizacao_canal_id: 1
+  negativacao_tipo_id: 1
+  usuario_id: 1
+  usuario_alterou_id: 1

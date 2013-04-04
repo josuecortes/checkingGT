@@ -1,0 +1,56 @@
+<div class="page-header">
+	<h3><%= link_to 'Voltar', core_pessoa_juridicas_path %> | Exibindo Pessoa Juridica <%= @core_pessoa_juridica.razaosocial %></h3>
+</div>
+
+
+<p>
+	<strong>Cnpj:</strong>
+	<%= @core_pessoa_juridica.cnpj %>
+</p>
+
+
+<p>
+	<strong>Razão Social:</strong>
+	<%= @core_pessoa_juridica.razaosocial %>
+</p>
+
+
+<p>
+	<strong>Endereco:</strong>
+	<%= @core_pessoa_juridica.endereco %>
+</p>
+
+
+<p>
+	<strong>Bairro:</strong>
+	<%= @core_pessoa_juridica.bairro %>
+</p>
+
+
+<p>
+	<strong>Cidade:</strong>
+	<%= @core_pessoa_juridica.cidade %>
+</p>
+
+
+<p>
+	<strong>Estado:</strong>
+	<%= @core_pessoa_juridica.estado %>
+</p>
+
+
+<p>
+	<strong>Observacoes:</strong>
+	<%= @core_pessoa_juridica.observacoes %>
+</p>
+
+
+<p>
+	<strong>Criado por:</strong>
+	<%= @core_pessoa_juridica.usuario.nome %>
+	<strong>Em:</strong>
+	<%= @core_pessoa_juridica.created_at.to_s_br %>
+</p>
+
+<%= link_to 'Editar', edit_core_pessoa_juridica_path(@core_pessoa_juridica) %> |
+<%= link_to 'Voltar', core_pessoa_juridicas_path %>

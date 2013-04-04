@@ -1,0 +1,40 @@
+<div id="barra_titulo">
+  <h3 class="titulo_new">Alterar Perfil de Usuario</h3>
+</div>
+
+<%= form_for @usuario, :url=>{:action=>'update'} do |f| %>
+
+  <% if @usuario.errors.any? %>
+    <div id="error_explanation">
+      <strong><%= pluralize(@usuario.errors.count, "erro") %> ao tentar salvar este formulario:</strong>
+
+      <ul>
+      <% @usuario.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table class="formulario">
+  <tr>
+      <td class="lista_item"><%= f.label :nome %></td>
+      <td class="lista_conteudo"><%= f.text_field :nome %></td>
+  </tr>
+  <tr>
+      <td class="lista_item"><%= f.label :email, 'E-mail' %></td>
+      <td class="lista_conteudo"><%= f.text_field :email %></td>
+  </tr>
+  <tr>
+      <td class="lista_item"><%= f.label :email_confirmation, 'Confirme o E-mail ' %></td>
+      <td class="lista_conteudo"><%= f.text_field :email_confirmation %></td>
+  </tr>
+  <tr>
+      <td class="lista_item"/ >
+      <td class="lista_conteudo"><%= f.submit 'Salvar', :class=>"botao_formulario" %></td>
+  </tr>
+<% end %>
+</table>
+
+<div id="link_voltar">
+  <%= link_to 'Voltar', core_perfil_path(@usuario) %>
+</div>

@@ -1,0 +1,2 @@
+module Core::NotaRetidasHelper
+end

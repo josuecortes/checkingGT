@@ -1,0 +1,209 @@
+<% valor = false %>
+
+<% @notas[0].nota_retidas.each do |nota| %>
+	
+	<% if nota.fiscalizacao_regra.fiscalizacao_canal.codigo == 'VERMELHO' %>
+		<% valor = true %>
+	<% end %>
+
+<% end %>
+
+<% if valor != false %>
+	<div class="ocultos" align="center">
+		<fieldset>	
+			<font color="red">*ATENCAO*<BR>Configure a Orientação da Pagina para Retrato.</font>
+					
+			<% if @notas[0].nota_retidas.count > 1 %>
+				<h3><%= @notas[0].nota_retidas.count %> Pendencias encontradas</h3>
+			<% else %>
+				<h3><%= @notas[0].nota_retidas.count %> Pendencia encontrada</h3>
+			<% end %>
+			<%= link_to 'Voltar', :back, :class=>"btn btn btn-small" %> &nbsp;&nbsp;
+			<input type="button" onClick="window.print()" value="Imprimir Termo de Retencao"/>
+					
+		</fieldset>
+		<br>
+	</div>	
+						
+	<center>
+	
+	<table width="640" class="bordasimples">
+	  <tr>
+	    <td rowspan="3" align="center" valign="middle"><simbolo><%= image_tag("amapa.jpg") %></td>
+	    <td colspan="2" rowspan="3" align="center" valign="middle"><p><strong>GOVERNO DO ESTADO DO AMAPA</strong></p>
+	    <p><strong>SECRETARIA DA RECEITA ESTADUAL</strong></p>
+	    <p><strong>COORDENADORIA DE FISCALIZACAO</strong></p>
+	    <p><strong>NUCLEO DE FISCALIZACAO</strong></p></td>
+	    <td colspan="2" align="center" valign="middle"><strong>TERMO DE RETENCAO DE DOCUMENTO FISCAL</strong></td>
+	  </tr>
+	  <tr>
+	    <td colspan="2" align="center" valign="middle"><strong>MACAPA/AP</strong></td>
+	  </tr>
+	  <tr>
+	    <td colspan="2" align="center" valign="middle"><strong>Data: </strong><%= DateTime.now.to_s_br %></td>
+	  </tr>
+	  <tr>
+	    <td colspan="5" align="center" valign="middle"><strong>INFORMACOES DO TRANSPORTADOR (Destinatario)</strong></td>
+	  </tr>
+	  <tr>
+	    <td colspan="5" align="left" valign="middle"><strong>RAZAO SOCIAL</strong></td>
+	  </tr>
+	  <tr>
+	    <td colspan="5" align="left" valign="middle"><%= @notas[0].transportadora_destino.razaosocial  %></td>
+	  </tr>
+	  <tr>
+	    <td colspan="3" align="left" valign="middle"><strong>ENDERECO</strong></td>
+	    <td align="left" valign="middle"><strong>N</strong></td>
+	    <td align="left" valign="middle"><strong>BAIRRO</strong></td>
+	  </tr>
+	  <tr>
+	    <td colspan="3" align="left" valign="middle"><%= @notas[0].transportadora_destino.endereco  %></td>
+	    <td align="left" valign="middle">Numero</td>
+	    <td align="left" valign="middle"><%= @notas[0].transportadora_destino.bairro  %></td>
+	  </tr>
+	  <tr>
+	    <td colspan="3" align="left" valign="middle"><strong>CNPJ</strong></td>
+	    <td colspan="2" align="left" valign="middle"><strong>INSC. ESTADUAL</strong></td>
+	  </tr>
+	  <tr>
+	    <td colspan="3" align="left" valign="middle"><%= @notas[0].transportadora_destino.cnpj  %></td>
+	    <td colspan="2" align="left" valign="middle"><%= @notas[0].transportadora_destino.inscricaoestadual  %></td>
+	  </tr>
+	  <tr>
+	    <td colspan="2" align="left" valign="middle"><strong>CONHECIMENTO</strong></td>
+	    <td colspan="3" align="left" valign="middle"><strong>NOTA FISCAL</strong></td>
+	  </tr>
+	  <tr>
+	    <td colspan="2" align="left" valign="middle"><%= @notas[0].numero_nota  %></td>
+	    <td colspan="3" align="left" valign="middle"><%= @notas[0].codigo  %></td>
+	  </tr>
+	  <tr>
+	    <td colspan="5" align="center" valign="middle"><strong>INFORMACOES DO CONTRIBUINTE (Destinatario</strong>)</td>
+	  </tr>
+	  <% if @notas[0].cnpj_destino != nil %>  
+	    <tr>
+	      <td colspan="5" align="left" valign="middle"><strong>RAZAO SOCIAL</strong></td>
+	    </tr>
+	    <tr>
+	      <td colspan="5" align="left" valign="middle">&nbsp;<%= @notas[0].razao_social_destino %></td>
+	    </tr>
+	    <tr>
+	      <td colspan="3" align="left" valign="middle"><strong>ENDERECO</strong></td>
+	      <td align="left" valign="middle"><strong>N</strong></td>
+	      <td align="left" valign="middle"><strong>BAIRRO</strong></td>
+	    </tr>
+	    <tr>
+	      <td colspan="3" align="left" valign="middle"><%= @notas[0].endereco_destino %></td>
+	      <td align="left" valign="middle">Numero</td>
+	      <td align="left" valign="middle"><%= @notas[0].bairro_destino %></td>
+	    </tr>
+	    <tr>
+	      <td colspan="3" align="left" valign="middle"><strong>CNPJ</strong></td>
+	      <td colspan="2" align="left" valign="middle"><strong>INSC. ESTADUAL</strong></td>
+	    </tr>
+	    <tr>
+	      <td colspan="3" align="left" valign="middle"><%= @notas[0].cnpj_destino %></td>
+	      <td colspan="2" align="left" valign="middle">&nbsp;<%= @notas[0].ie_destino %></td>
+	    </tr>
+	  <% else %>
+	    <tr>
+	      <td colspan="5" align="left" valign="middle"><strong>NOME</strong></td>
+	    </tr>
+	    <tr>
+	      <td colspan="5" align="left" valign="middle">&nbsp;<%= @notas[0].nome_destino %></td>
+	    </tr>
+	    <tr>
+	      <td colspan="3" align="left" valign="middle"><strong>ENDERECO</strong></td>
+	      <td align="left" valign="middle"><strong>N</strong></td>
+	      <td align="left" valign="middle"><strong>BAIRRO</strong></td>
+	    </tr>
+	    <tr>
+	      <td colspan="3" align="left" valign="middle"><%= @notas[0].endereco_destino %></td>
+	      <td align="left" valign="middle">Numero</td>
+	      <td align="left" valign="middle"><%= @notas[0].bairro_destino %></td>
+	    </tr>
+	    <tr>
+	      <td colspan="3" align="left" valign="middle"><strong>CPF</strong></td>
+	      <td colspan="2" align="left" valign="middle"><strong>INSC. ESTADUAL</strong></td>
+	    </tr>
+	    <tr>
+	      <td colspan="3" align="left" valign="middle"><%= @notas[0].cpf_destino %></td>
+	      <td colspan="2" align="left" valign="middle">&nbsp;</td>
+	    </tr>
+	  <% end %>
+	  <tr>
+	    <td colspan="5" align="center" valign="middle"><strong>MOTIVO RETENCAO</strong></td>
+	  </tr>
+	  <tr>
+	    <td colspan="5">
+	    	
+	    	<% cont = 0 %>
+	    	
+	    	<% @notas[0].nota_retidas.each do |nota| %>
+	    		
+	    		<% if nota.fiscalizacao_regra.fiscalizacao_canal.codigo == 'VERMELHO' %>
+	    			
+	    			<% cont = cont + 1 %>
+	    			
+				   <table width="100%" class="bordasimples">
+					  <tr>
+					    <td colspan="5"><strong><%= cont %></strong>  -  <strong><%= nota.fiscalizacao_regra.descricao %></strong></td>
+					  </tr>
+					  <tr>
+					    <td><strong>Valor Principal</strong></td>
+					    <td><strong>Valor Multa</strong></td>
+					    <td><strong>Valor Correcao</strong></td>
+					    <td><strong>Valor Juros</strong></td>
+					    <td><strong>Valor Total</strong></td>
+					  </tr>
+					  <tr>
+					    <td><%= nota.valor_principal.real_contabil %></td>
+						<td><%= nota.valor_multa.real_contabil %></td>
+						<td><%= nota.valor_correcao_monetaria.real_contabil %></td>
+						<td><%= nota.valor_juros.real_contabil %></td>
+						<td><%= nota.valor_total.real_contabil %></td>
+					  </tr>
+					  <tr>
+					    <td><strong>Data Entrada</strong></td>
+					    <td><strong>Data Vencimento</strong></td>
+					    <td colspan="3"><strong>Fiscalizada em</strong></td>
+					  </tr>
+					  <tr>
+					    <td><%= nota.data_entrada.to_s_br %></td>
+						<td><%= nota.data_vencimento.to_s_br %></td>
+						<td colspan="3"><%= nota.datahora_fiscalizacao.to_s_br %></td>
+					  </tr>
+					</table>
+	    		<% end %>
+	    	<% end %>	
+	    
+	    </td>
+	  </tr>
+	  <tr>
+	    <td align="center" valign="middle"><strong>DATA</strong></td>
+	    <td colspan="2" align="center" valign="middle"><strong>NOME DO RECEBEDOR</strong></td>
+	    <td align="center" valign="middle"><strong>CPF/RG</strong></td>
+	    <td align="center" valign="middle"><strong>ASSINATURA DO RECEBEDOR</strong></td>
+	  </tr>
+	  <tr>
+	    <td>&nbsp;</td>
+	    <td colspan="2">&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	  </tr>
+	</table>
+	
+	</center>
+	
+<% else %>
+	<div class="ocultos" align="center">
+		<fieldset>	
+			<font color="red">*ATENCAO*<BR>Esta nota nao contem motivos que levem a um termo de retencao</font>
+			<br>
+			<%= link_to 'Voltar', :back, :class=>"btn btn btn-small" %> &nbsp;&nbsp;
+			 
+					
+		</fieldset>
+		<br>
+	</div>				
+<% end %>
